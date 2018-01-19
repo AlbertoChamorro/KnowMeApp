@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KnowMe</string>
+    <string name="hint_user_name">Nombre de Usuario</string>
+    <string name="title_activity_">Activity</string>
 </resources>
