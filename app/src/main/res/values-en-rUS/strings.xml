@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KnowMe</string>
+    <string name="hint_user_name">User Name</string>
+    <string name="hint_password">Password</string>
+</resources>
