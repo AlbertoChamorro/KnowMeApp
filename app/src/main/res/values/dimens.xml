@@ -1,3 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="textSizeLogin">22sp</dimen>
+    <dimen name="paddingHorizontal">32dp</dimen>
 </resources>
