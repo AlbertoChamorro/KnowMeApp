@@ -70,6 +70,29 @@
                     android:text="@string/text_btn_login"
                     android:layout_marginTop="@dimen/paddingHorizontal"
                     android:theme="@style/RaiseButtonDark"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/dont_have_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_dont_have_account"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorWhite"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_create_account"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        android:paddingLeft="@dimen/default_space"
+                        android:layout_toRightOf="@+id/dont_have_account"
+                        android:onClick="createNewAccount"
+                        />
+                </RelativeLayout>
             </LinearLayout>
         </ScrollView>
 
