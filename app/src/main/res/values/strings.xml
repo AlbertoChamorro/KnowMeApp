@@ -4,5 +4,9 @@
     <string name="hint_password">Contraseña</string>
     <string name="text_btn_login">Login</string>
     <string name="text_dont_have_account">¿No tienes cuenta?,</string>
-    <string name="text_create_account">crea una aquí</string>
+    <string name="text_create_account">Crear cuenta</string>
+    <string name="hint_confirm_password">confirmar contraseña</string>
+    <string name="text_create_account_now">crea una aquí</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_email">Correo</string>
 </resources>
