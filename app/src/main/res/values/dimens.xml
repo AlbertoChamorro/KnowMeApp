@@ -1,6 +1,11 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="textSizeSmall">14dp</dimen>
     <dimen name="textSizeLogin">18sp</dimen>
+    <dimen name="textSizeBig">24sp</dimen>
     <dimen name="paddingHorizontal">32dp</dimen>
     <dimen name="default_space">8dp</dimen>
+    <dimen name="separator">4dp</dimen>
+    <dimen name="height_picture_cardview">200dp</dimen>
+    <dimen name="cardview_corner_radius">10dp</dimen>
 </resources>
