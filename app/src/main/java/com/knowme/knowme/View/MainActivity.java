@@ -3,6 +3,7 @@ package com.knowme.knowme.View;
 import android.app.FragmentTransaction;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -30,32 +31,13 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.menu_home:
-                                //showFragment(new HomeFragment(), R.id.tab_container_fragment);
-                                HomeFragment homeFragment = new HomeFragment();
-                                getSupportFragmentManager()
-                                        .beginTransaction()
-                                        .replace(R.id.tab_container_fragment, homeFragment)
-                                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                        .addToBackStack(null)
-                                        .commit();
+                                showFragment(new HomeFragment(), R.id.tab_container_fragment);
                                 break;
                             case R.id.menu_search:
-                                SearchFragment searchFragment = new SearchFragment();
-                                getSupportFragmentManager()
-                                        .beginTransaction()
-                                        .replace(R.id.tab_container_fragment, searchFragment)
-                                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                        .addToBackStack(null)
-                                        .commit();
+                                showFragment(new SearchFragment(), R.id.tab_container_fragment);
                                 break;
                             case R.id.menu_profile:
-                                ProfileFragment profileFragment = new ProfileFragment();
-                                getSupportFragmentManager()
-                                        .beginTransaction()
-                                        .replace(R.id.tab_container_fragment, profileFragment)
-                                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                        .addToBackStack(null)
-                                        .commit();
+                                showFragment(new ProfileFragment(), R.id.tab_container_fragment);
                                 break;
                         }
                         return false;
@@ -63,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    public <T>  void showFragment(T fragment, int id) {
+    public <T> void showFragment(T fragment, int containerId) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(id, null)
+                .replace(containerId, (Fragment) fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .addToBackStack(null)
                 .commit();
