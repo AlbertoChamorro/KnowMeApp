@@ -12,7 +12,7 @@
         />
 
     <item
-        android:id="@+id/menu_notifications"
+        android:id="@+id/menu_profile"
         android:title="@string/text_profile_bottombar"
         android:icon="@drawable/ic_action_person_outline"/>
 </menu>

@@ -7,5 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.knowme.knowme.View.MainActivity">
+
+     <FrameLayout
+         android:id="@+id/tab_container_fragment"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_marginBottom="@dimen/height_bottombar"
+         />
+
      <include layout="@layout/bottombar"> </include>
+
 </RelativeLayout>
