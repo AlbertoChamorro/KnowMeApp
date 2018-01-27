@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.knowme.knowme.View.CreateAccountActivity;
+import com.knowme.knowme.View.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -16,8 +17,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void createNewAccount(View view) {
-        Intent intent = new Intent(this, CreateAccountActivity.class);
-        startActivity(intent);
+        Intent createAccountActivity = new Intent(this, CreateAccountActivity.class);
+        startActivity(createAccountActivity);
     }
 
+    public void login(View view) {
+       Intent homeActivity = new Intent(this, MainActivity.class);
+       startActivity(homeActivity);
+    }
 }
