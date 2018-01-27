@@ -10,4 +10,7 @@
     <string name="text_create_account_now">create one here</string>
     <string name="hint_name">Name</string>
     <string name="hint_email">Email</string>
+    <string name="text_home_bottombar">Inicio</string>
+    <string name="text_profile_bottombar">Pérfil</string>
+    <string name="text_search_bottombar">Búscar</string>
 </resources>

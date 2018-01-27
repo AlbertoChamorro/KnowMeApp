@@ -70,6 +70,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorWhite"
                                 android:button="@drawable/checkbox_selector"
+                                android:buttonTint="@color/colorWhite"
                                     />
                             <TextView
                                 android:id="@+id/descriptionLikeCard"
