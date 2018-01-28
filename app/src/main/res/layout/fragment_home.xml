@@ -15,8 +15,12 @@
         android:paddingLeft="@dimen/fab_margin"
         android:paddingRight="@dimen/fab_margin"
         >
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/pictureCardRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <include layout="@layout/cardview_picture"></include>
+        </android.support.v7.widget.RecyclerView>
         <!--<include layout="@layout/cardview_picture"></include>-->
 
     </LinearLayout>

@@ -5,6 +5,7 @@
     android:id="@+id/pictureCardView"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_picture_cardview"
+    android:layout_marginBottom="@dimen/fab_margin"
     cardview:cardCornerRadius="@dimen/cardview_corner_radius">
     <FrameLayout
         android:layout_width="match_parent"
