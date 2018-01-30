@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        this.showToolbar("Home",false, view);
+        this.showToolbar(getResources().getString(R.string.text_home_bottombar),false, view);
 
         RecyclerView picturesRecylcler = (RecyclerView) view.findViewById(R.id.pictureCardRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -49,13 +49,13 @@ public class HomeFragment extends Fragment {
     public ArrayList<Picture> buildPictures() {
         ArrayList<Picture> pictures = new ArrayList<>();
         pictures.add(new Picture(
-                "https://www.google.com.ni/imgres?imgurl=https%3A%2F%2Foinsidercom.files.wordpress.com%2F2017%2F03%2F2nqzjyqi.png&imgrefurl=https%3A%2F%2Foinsidercom.wordpress.com%2F2017%2F01%2F17%2Fin-this-tutorial-we-learn-how-to-implement-qr-code-scanner-generator-using-zxing-scanner-generator-library-in-android-application-2%2F&docid=-ihLMI3SKaQUbM&tbnid=RrfLyer-GLR-NM%3A&vet=10ahUKEwiE4ca2zfvYAhWRvVMKHctFB-AQMwg8KAAwAA..i&w=400&h=400&itg=1&bih=796&biw=1707&q=generator%20images%20picasso%20android&ved=0ahUKEwiE4ca2zfvYAhWRvVMKHctFB-AQMwg8KAAwAA&iact=mrc&uact=8","José Rámirez","10 días","450"
+                "http://i.imgur.com/DvpvklR.png","José Rámirez","10 días","450 Me gusta"
         ));
         pictures.add(new Picture(
-                "https://www.google.com.ni/imgres?imgurl=https%3A%2F%2Foinsidercom.files.wordpress.com%2F2017%2F03%2F2nqzjyqi.png&imgrefurl=https%3A%2F%2Foinsidercom.wordpress.com%2F2017%2F01%2F17%2Fin-this-tutorial-we-learn-how-to-implement-qr-code-scanner-generator-using-zxing-scanner-generator-library-in-android-application-2%2F&docid=-ihLMI3SKaQUbM&tbnid=RrfLyer-GLR-NM%3A&vet=10ahUKEwiE4ca2zfvYAhWRvVMKHctFB-AQMwg8KAAwAA..i&w=400&h=400&itg=1&bih=796&biw=1707&q=generator%20images%20picasso%20android&ved=0ahUKEwiE4ca2zfvYAhWRvVMKHctFB-AQMwg8KAAwAA&iact=mrc&uact=8","Alberto Castellón","15 días","4"
+                "http://i.imgur.com/DvpvklR.png","Alberto Castellón","15 días","4 Me gusta"
         ));
         pictures.add(new Picture(
-                "https://www.google.com.ni/imgres?imgurl=https%3A%2F%2Foinsidercom.files.wordpress.com%2F2017%2F03%2F2nqzjyqi.png&imgrefurl=https%3A%2F%2Foinsidercom.wordpress.com%2F2017%2F01%2F17%2Fin-this-tutorial-we-learn-how-to-implement-qr-code-scanner-generator-using-zxing-scanner-generator-library-in-android-application-2%2F&docid=-ihLMI3SKaQUbM&tbnid=RrfLyer-GLR-NM%3A&vet=10ahUKEwiE4ca2zfvYAhWRvVMKHctFB-AQMwg8KAAwAA..i&w=400&h=400&itg=1&bih=796&biw=1707&q=generator%20images%20picasso%20android&ved=0ahUKEwiE4ca2zfvYAhWRvVMKHctFB-AQMwg8KAAwAA&iact=mrc&uact=8","Josh Warren","3 días","50"
+                "http://i.imgur.com/DvpvklR.png","Josh Warren","3 días","50 Me gusta"
         ));
        return pictures;
     }

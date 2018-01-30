@@ -10,7 +10,10 @@
     <string name="text_create_account_now">create one here</string>
     <string name="hint_name">Name</string>
     <string name="hint_email">Email</string>
-    <string name="text_home_bottombar">Inicio</string>
-    <string name="text_profile_bottombar">Pérfil</string>
-    <string name="text_search_bottombar">Búscar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_home_bottombar">Home</string>
+    <string name="text_profile_bottombar">Profile</string>
+    <string name="text_search_bottombar">Finder</string>
 </resources>
