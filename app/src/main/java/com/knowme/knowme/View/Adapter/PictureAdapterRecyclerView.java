@@ -42,7 +42,13 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
         holder.userName.setText(picture.getUserName());
         holder.timeCard.setText(picture.getTime());
         holder.likeNumberCard.setText(picture.getLikeNumber());
-        Picasso.with(this.activity).load(picture.getPictureUrl()).into(holder.pictureCard);
+        Picasso.with(this.activity)
+                .load(picture.getPictureUrl())
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder)
+               // .resize(50, 50)
+               // .centerCrop()
+                .into(holder.pictureCard);
     }
 
     @Override

@@ -49,13 +49,13 @@ public class HomeFragment extends Fragment {
     public ArrayList<Picture> buildPictures() {
         ArrayList<Picture> pictures = new ArrayList<>();
         pictures.add(new Picture(
-                "http://i.imgur.com/DvpvklR.png","José Rámirez","10 días","450 Me gusta"
+                "https://losviajesdedomi.com/wp-content/uploads/2014/02/halong-bay-1-600x402.jpg","José Rámirez","10 días","450 Me gusta"
         ));
         pictures.add(new Picture(
-                "http://i.imgur.com/DvpvklR.png","Alberto Castellón","15 días","4 Me gusta"
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg-FVz4v6DogPagv-eIq4pTGxEp3w4P_Eq4oxGTIUHyJ6lWizhAA","Alberto Castellón","15 días","4 Me gusta"
         ));
         pictures.add(new Picture(
-                "http://i.imgur.com/DvpvklR.png","Josh Warren","3 días","50 Me gusta"
+                "https://i2.wp.com/medioambienteynaturaleza.com/wp-content/uploads/2015/06/Fondos-de-pantalla-de-paisajes-naturales25.jpg","Josh Warren","3 días","50 Me gusta"
         ));
        return pictures;
     }
