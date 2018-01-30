@@ -1,4 +1,4 @@
-package com.knowme.knowme.View.Adapter;
+package com.knowme.knowme.Adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.knowme.knowme.R;
-import com.knowme.knowme.View.Model.Picture;
+import com.knowme.knowme.Model.Picture;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

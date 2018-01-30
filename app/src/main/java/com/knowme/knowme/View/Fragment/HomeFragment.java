@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.knowme.knowme.R;
-import com.knowme.knowme.View.Adapter.PictureAdapterRecyclerView;
-import com.knowme.knowme.View.Model.Picture;
+import com.knowme.knowme.Adapter.PictureAdapterRecyclerView;
+import com.knowme.knowme.Model.Picture;
 
 import java.util.ArrayList;
 

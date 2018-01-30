@@ -1,4 +1,4 @@
-package com.knowme.knowme.View.Model;
+package com.knowme.knowme.Model;
 
 /**
  * Created by BETO on 27/01/2018.
