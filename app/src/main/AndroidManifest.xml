@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.knowme.knowme">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +25,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity" />
         </activity>
-        <activity android:name=".View.MainActivity"></activity>
+        <activity android:name=".View.MainActivity" />
+        <activity android:name=".View.HomeDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -9,4 +9,5 @@
     <dimen name="height_picture_cardview">200dp</dimen>
     <dimen name="cardview_corner_radius">10dp</dimen>
     <dimen name="height_bottombar">56dp</dimen>
+    <dimen name="textSizeBigger">28sp</dimen>
 </resources>

@@ -16,4 +16,5 @@
     <string name="text_home_bottombar">Home</string>
     <string name="text_profile_bottombar">Profile</string>
     <string name="text_search_bottombar">Finder</string>
+    <string name="user_test">Pepito Lopez</string>
 </resources>
