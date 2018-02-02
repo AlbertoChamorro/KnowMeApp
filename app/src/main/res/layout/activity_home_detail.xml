@@ -82,6 +82,31 @@
                     android:paddingLeft="@dimen/default_space"
                     android:textSize="@dimen/textSizeSmall"/>
             </LinearLayout>
+            
+            <view
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_view"
+                android:layout_marginTop="@dimen/default_space"
+                android:background="@color/cardview_dark_background"
+                />
+            <TextView
+                android:id="@+id/titleImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_image"
+                android:textSize="@dimen/textSizeLogin"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="@dimen/fab_margin"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/contentImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="@dimen/fab_margin"
+                android:text="@string/lorem"
+                android:textSize="@dimen/textSizeLogin" />
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
