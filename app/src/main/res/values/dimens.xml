@@ -11,4 +11,5 @@
     <dimen name="height_bottombar">56dp</dimen>
     <dimen name="textSizeBigger">28sp</dimen>
     <dimen name="height_view">1dp</dimen>
+    <dimen name="height_appbar">256dp</dimen>
 </resources>

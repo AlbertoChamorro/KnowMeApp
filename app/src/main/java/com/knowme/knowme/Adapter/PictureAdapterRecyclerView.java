@@ -1,6 +1,7 @@
 package com.knowme.knowme.Adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.knowme.knowme.R;
 import com.knowme.knowme.Model.Picture;
+import com.knowme.knowme.View.HomeDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -49,6 +51,15 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
                // .resize(50, 50)
                // .centerCrop()
                 .into(holder.pictureCard);
+
+        // set on click
+        holder.pictureCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, HomeDetailActivity.class);
+                activity.startActivity(intent);
+            }
+        });
     }
 
     @Override
