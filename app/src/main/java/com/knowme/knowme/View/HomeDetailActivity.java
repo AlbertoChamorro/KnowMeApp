@@ -1,10 +1,12 @@
 package com.knowme.knowme.View;
 
+import android.os.Build;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
+import android.transition.Fade;
 
 import com.knowme.knowme.R;
 
@@ -17,7 +19,9 @@ public class HomeDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_detail);
         this.showToolbar("Detalle de Home", true);
-
+        if (Build.VERSION.SDK_INT  >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setExitTransition(new Fade());
+        }
     }
 
     public void showToolbar(String title, Boolean showBackButton) {

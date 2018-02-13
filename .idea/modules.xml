@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KnowMe.iml" filepath="$PROJECT_DIR$/KnowMe.iml" />
-      <module fileurl="file://$PROJECT_DIR$/KnowMeApp.iml" filepath="$PROJECT_DIR$/KnowMeApp.iml" />
       <module fileurl="file://C:\Users\BETO\Documents\KnowMe\KnowMeApp.iml" filepath="C:\Users\BETO\Documents\KnowMe\KnowMeApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
