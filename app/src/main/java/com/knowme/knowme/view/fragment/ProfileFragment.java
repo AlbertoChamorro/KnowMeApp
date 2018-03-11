@@ -1,4 +1,4 @@
-package com.knowme.knowme.View.Fragment;
+package com.knowme.knowme.view.fragment;
 
 
 import android.os.Bundle;
@@ -11,19 +11,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.knowme.knowme.adapter.PictureAdapterRecyclerView;
+import com.knowme.knowme.model.Picture;
 import com.knowme.knowme.R;
-import com.knowme.knowme.Adapter.PictureAdapterRecyclerView;
-import com.knowme.knowme.Model.Picture;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
 
-    public HomeFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
@@ -32,10 +32,10 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        this.showToolbar(getResources().getString(R.string.text_home_bottombar),false, view);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        this.showToolbar("", true, view);
 
-        RecyclerView picturesRecylcler = (RecyclerView) view.findViewById(R.id.pictureCardRecyclerView);
+        RecyclerView picturesRecylcler = (RecyclerView) view.findViewById(R.id.profileRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         picturesRecylcler.setLayoutManager(linearLayoutManager);
@@ -45,6 +45,7 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
 
     public ArrayList<Picture> buildPictures() {
         ArrayList<Picture> pictures = new ArrayList<>();
@@ -57,7 +58,7 @@ public class HomeFragment extends Fragment {
         pictures.add(new Picture(
                 "https://i2.wp.com/medioambienteynaturaleza.com/wp-content/uploads/2015/06/Fondos-de-pantalla-de-paisajes-naturales25.jpg","Josh Warren","3 días","50 Me gusta"
         ));
-       return pictures;
+        return pictures;
     }
 
     public void showToolbar(String title, Boolean showBackButton, View view) {
@@ -66,4 +67,5 @@ public class HomeFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(title);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(showBackButton);
     }
+
 }

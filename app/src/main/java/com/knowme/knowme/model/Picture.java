@@ -1,4 +1,4 @@
-package com.knowme.knowme.Model;
+package com.knowme.knowme.model;
 
 /**
  * Created by BETO on 27/01/2018.

@@ -1,4 +1,4 @@
-package com.knowme.knowme.View.Fragment;
+package com.knowme.knowme.view.fragment;
 
 
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.knowme.knowme.Adapter;
+package com.knowme.knowme.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.knowme.knowme.R;
-import com.knowme.knowme.Model.Picture;
-import com.knowme.knowme.View.HomeDetailActivity;
+import com.knowme.knowme.model.Picture;
+import com.knowme.knowme.view.HomeDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

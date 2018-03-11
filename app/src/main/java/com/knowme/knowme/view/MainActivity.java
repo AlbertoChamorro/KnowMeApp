@@ -1,4 +1,4 @@
-package com.knowme.knowme.View;
+package com.knowme.knowme.view;
 
 import android.app.FragmentTransaction;
 import android.support.annotation.NonNull;
@@ -9,9 +9,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.knowme.knowme.R;
-import com.knowme.knowme.View.Fragment.HomeFragment;
-import com.knowme.knowme.View.Fragment.ProfileFragment;
-import com.knowme.knowme.View.Fragment.SearchFragment;
+import com.knowme.knowme.view.fragment.HomeFragment;
+import com.knowme.knowme.view.fragment.ProfileFragment;
+import com.knowme.knowme.view.fragment.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 

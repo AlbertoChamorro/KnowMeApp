@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".login.view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,19 +19,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.CreateAccountActivity"
-            android:parentActivityName=".LoginActivity">
+            android:name=".view.CreateAccountActivity"
+            android:parentActivityName=".login.view.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity" />
+                android:value=".login.view.LoginActivity" />
         </activity>
-        <activity android:name=".View.MainActivity" />
+        <activity android:name=".view.MainActivity" />
         <activity
-            android:name=".View.HomeDetailActivity"
-            android:parentActivityName=".View.MainActivity">
+            android:name=".view.HomeDetailActivity"
+            android:parentActivityName=".view.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".View.MainActivity" />
+                android:value=".view.MainActivity" />
         </activity>
     </application>
 

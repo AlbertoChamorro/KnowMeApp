@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.knowme.knowme.View.CreateAccountActivity">
+    tools:context="com.knowme.knowme.view.CreateAccountActivity">
 
     <!-- include layout in this case an toolbar -->
     <include layout="@layout/actionbar_toolbar"> </include>

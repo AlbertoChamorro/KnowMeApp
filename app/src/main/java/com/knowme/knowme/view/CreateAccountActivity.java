@@ -1,4 +1,4 @@
-package com.knowme.knowme.View;
+package com.knowme.knowme.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
