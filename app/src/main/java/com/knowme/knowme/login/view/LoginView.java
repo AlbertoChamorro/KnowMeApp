@@ -10,7 +10,7 @@ public interface LoginView {
 
     void createNewAccount(View view);
 
-    void login(View view);
+    void goHome();
 
     void redirectToWebPage(View view);
 

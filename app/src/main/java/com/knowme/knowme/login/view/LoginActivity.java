@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.knowme.knowme.R;
+import com.knowme.knowme.login.presenter.LoginPresenter;
+import com.knowme.knowme.login.presenter.LoginPresenterImpl;
 import com.knowme.knowme.view.CreateAccountActivity;
 import com.knowme.knowme.view.MainActivity;
 
@@ -19,6 +22,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     private TextInputEditText passwordEditText;
     private Button loginButton;
     private ProgressBar progressBar;
+    private LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         this.passwordEditText = (TextInputEditText) findViewById(R.id.password);
         this.loginButton = (Button) findViewById(R.id.login_button);
         this.progressBar = (ProgressBar) findViewById(R.id.progress_bar_login);
+        this.loginPresenter = new LoginPresenterImpl(this);
+        this.toogleProgressBar(false);
+        this.loginButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                loginPresenter.signIn(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+            }
+        });
     }
 
     @Override
@@ -37,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     }
 
     @Override
-    public void login(View view) {
+    public void goHome() {
         Intent homeActivity = new Intent(this, MainActivity.class);
         startActivity(homeActivity);
     }
@@ -50,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     @Override
     public void loginError(String error) {
-
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -63,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     @Override
     public void toogleProgressBar(Boolean state) {
 
-        int stateVisibility = state ? View.VISIBLE : View.GONE;
+        int stateVisibility = state == true ? View.VISIBLE : View.GONE;
         this.progressBar.setVisibility(stateVisibility);
     }
 }

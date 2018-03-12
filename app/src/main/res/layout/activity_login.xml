@@ -71,7 +71,6 @@
                     android:text="@string/text_btn_login"
                     android:layout_marginTop="@dimen/paddingHorizontal"
                     android:theme="@style/RaiseButtonDark"
-                    android:onClick="login"
                     />
 
                 <RelativeLayout
