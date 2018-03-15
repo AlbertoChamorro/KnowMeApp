@@ -21,11 +21,11 @@ public class LoginInteractorImpl implements  LoginInteractor {
 
     @Override
     public void signIn(String username, String password) {
-        if(username.equals("pepito") && password.equals("123456")) {
+        if(!username.equals("") && !password.equals("")) {
             this.loginRepository.signIn(username, password);
             return;
         }
 
-        this.loginPresenter.signInError("Credenciales invâlidas, verífique...");
+        this.loginPresenter.signInError("Credenciales inválidas, verífique...");
     }
 }
