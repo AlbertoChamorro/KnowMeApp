@@ -5,9 +5,12 @@ import android.net.Uri;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.knowme.knowme.R;
@@ -20,6 +23,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     private TextInputEditText usernameEditText;
     private TextInputEditText passwordEditText;
+    private TextView create_account_here;
     private Button loginButton;
     private ProgressBar progressBar;
     private LoginPresenter loginPresenter;
@@ -32,6 +36,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         this.passwordEditText = (TextInputEditText) findViewById(R.id.password);
         this.loginButton = (Button) findViewById(R.id.login_button);
         this.progressBar = (ProgressBar) findViewById(R.id.progress_bar_login);
+        this.create_account_here = (TextView) findViewById(R.id.create_account_here);
+
+        String textUnderlineAccount = this.create_account_here.getText().toString();
+        SpannableString content = new SpannableString(textUnderlineAccount);
+        content.setSpan(new UnderlineSpan(), 0, textUnderlineAccount.length(), 0);
+        this.create_account_here.setText(content);
+
         this.loginPresenter = new LoginPresenterImpl(this);
         this.toogleProgressBar(false);
         this.loginButton.setOnClickListener(new View.OnClickListener(){

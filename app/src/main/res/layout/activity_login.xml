@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="1"
-        tools:layout_editor_absoluteX="0dp">
+        >
 
         <RelativeLayout
             android:id="@+id/img_login"
@@ -21,10 +21,11 @@
             android:background="@color/colorPrimary"
             >
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/imageSizeLogo"
+                    android:layout_height="@dimen/imageSizeLogo"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/me"
+                    android:backgroundTint="@color/colorWhite"
+                    android:background="@drawable/ic_my_location"
                     android:onClick="redirectToWebPage"
                     />
         </RelativeLayout>
@@ -67,7 +68,7 @@
                 <Button
                     android:id="@+id/login_button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_button"
                     android:text="@string/text_btn_login"
                     android:layout_marginTop="@dimen/paddingHorizontal"
                     android:theme="@style/RaiseButtonDark"
@@ -82,16 +83,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/text_dont_have_account"
-                        android:textStyle="bold"
+                        android:textSize="@dimen/font_size_small"
                         android:textColor="@color/colorWhite"/>
                     <TextView
+                        android:id="@+id/create_account_here"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/text_create_account_now"
                         android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/font_size_default"
                         android:textStyle="bold"
                         android:paddingLeft="@dimen/default_space"
                         android:layout_toRightOf="@+id/dont_have_account"
+                        android:layout_alignBaseline="@+id/dont_have_account"
                         android:onClick="createNewAccount"
                         />
                      <ProgressBar

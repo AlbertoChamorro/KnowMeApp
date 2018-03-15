@@ -13,4 +13,10 @@
     <dimen name="height_view">1dp</dimen>
     <dimen name="height_appbar">256dp</dimen>
     <dimen name="sizeImageProfile">148dp</dimen>
+    <dimen name="height_button">50dp</dimen>
+
+    <dimen name="imageSizeLogo">128dp</dimen>
+    <dimen name="font_size_small">14dp</dimen>
+    <dimen name="font_size_default">16dp</dimen>
+
 </resources>
