@@ -5,8 +5,6 @@ import android.net.Uri;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -16,6 +14,7 @@ import android.widget.Toast;
 import com.knowme.knowme.R;
 import com.knowme.knowme.login.presenter.LoginPresenter;
 import com.knowme.knowme.login.presenter.LoginPresenterImpl;
+import com.knowme.knowme.util.Helper;
 import com.knowme.knowme.view.CreateAccountActivity;
 import com.knowme.knowme.view.MainActivity;
 
@@ -38,10 +37,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         this.progressBar = (ProgressBar) findViewById(R.id.progress_bar_login);
         this.create_account_here = (TextView) findViewById(R.id.create_account_here);
 
-        String textUnderlineAccount = this.create_account_here.getText().toString();
-        SpannableString content = new SpannableString(textUnderlineAccount);
-        content.setSpan(new UnderlineSpan(), 0, textUnderlineAccount.length(), 0);
-        this.create_account_here.setText(content);
+        this.create_account_here.setText(Helper.underlineText(this.create_account_here.getText().toString()));
 
         this.loginPresenter = new LoginPresenterImpl(this);
         this.toogleProgressBar(false);

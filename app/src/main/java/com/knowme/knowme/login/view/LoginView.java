@@ -5,7 +5,6 @@ import android.view.View;
 /**
  * Created by coredeveloper on 3/11/18.
  */
-
 public interface LoginView {
 
     void createNewAccount(View view);
