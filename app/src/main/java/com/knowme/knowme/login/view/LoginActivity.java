@@ -1,6 +1,7 @@
 package com.knowme.knowme.login.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     private ProgressBar progressBar;
     private LoginPresenter loginPresenter;
 
+    private TextView nameAppTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
                 loginPresenter.signIn(usernameEditText.getText().toString(), passwordEditText.getText().toString());
             }
         });
+
+        this.nameAppTextView = (TextView) findViewById(R.id.name_app_textView);
+        //R.color.colorPrimaryDark
+       // this.nameAppTextView.setShadowLayer(30, 0, 0, Color.RED);
     }
 
     @Override

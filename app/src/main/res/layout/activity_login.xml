@@ -16,23 +16,39 @@
             android:id="@+id/img_login"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.6"
+            android:layout_weight="0.7"
             android:background="@color/colorPrimary"
             >
-                <ImageView
-                    android:layout_width="@dimen/imageSizeLogo"
-                    android:layout_height="@dimen/imageSizeLogo"
-                    android:layout_centerInParent="true"
-                    android:backgroundTint="@color/colorWhite"
-                    android:background="@drawable/ic_my_location"
-                    android:onClick="redirectToWebPage"
-                    />
+                <!--<ImageView-->
+                    <!--android:layout_width="@dimen/imageSizeLogo"-->
+                    <!--android:layout_height="@dimen/imageSizeLogo"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--android:backgroundTint="@color/colorWhite"-->
+                    <!--android:background="@drawable/ic_my_location"-->
+                    <!--android:onClick="redirectToWebPage"-->
+                    <!--/>-->
+                    <TextView
+                        android:id="@+id/name_app_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/app_name"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/imageSizeLogo"
+                        android:textStyle="bold"
+                        android:shadowColor="@color/colorBlack"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="50"
+                        android:onClick="redirectToWebPage"
+                        />
         </RelativeLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.4"
+            android:layout_weight="0.3"
             android:fillViewport="true">
             <RelativeLayout
                 android:layout_width="match_parent"
