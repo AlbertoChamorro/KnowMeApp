@@ -8,4 +8,8 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
         app:menu="@menu/bottom_nav_items"
+        app:itemIconTint="@drawable/item_bottomnavigationview_selector"
+        app:itemTextColor="@drawable/item_bottomnavigationview_selector"
+
     />
+<!-- app:itemTextColor="@drawable/item_bottomnavigationview_selector" -->

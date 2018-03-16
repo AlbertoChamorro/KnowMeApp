@@ -31,18 +31,34 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.menu_home:
-                                showFragment(new HomeFragment(), R.id.tab_container_fragment);
+                                    item.setChecked(true);
+                                    showFragment(new HomeFragment(), R.id.tab_container_fragment);
                                 break;
                             case R.id.menu_search:
-                                showFragment(new SearchFragment(), R.id.tab_container_fragment);
+                                    item.setChecked(true);
+                                    showFragment(new SearchFragment(), R.id.tab_container_fragment);
                                 break;
                             case R.id.menu_profile:
-                                showFragment(new ProfileFragment(), R.id.tab_container_fragment);
+                                    item.setChecked(true);
+                                    showFragment(new ProfileFragment(), R.id.tab_container_fragment);
                                 break;
                         }
                         return false;
                     }
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        }
+//        if (!viewIsAtHome) { //if the current view is not the News fragment
+//            displayView(R.id.nav_news); //display the News fragment
+//        } else {
+//            moveTaskToBack(true);  //If view is in News fragment, exit application
+//        }
     }
 
     public <T> void showFragment(T fragment, int containerId) {
