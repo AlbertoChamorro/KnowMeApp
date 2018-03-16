@@ -17,4 +17,7 @@
     <string name="text_profile_bottombar">Profile</string>
     <string name="text_search_bottombar">Finder</string>
     <string name="user_test">Pepito Lopez</string>
+    <string name="post_new_titleHint">Title</string>
+    <string name="post_new_descriptionHint">Description</string>
+    <string name="post_new_create_button">Crear Post</string>
 </resources>

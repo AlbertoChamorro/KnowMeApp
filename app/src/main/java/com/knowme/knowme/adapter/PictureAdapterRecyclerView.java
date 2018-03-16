@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.knowme.knowme.R;
 import com.knowme.knowme.model.Picture;
+import com.knowme.knowme.util.Helper;
 import com.knowme.knowme.view.HomeDetailActivity;
 import com.squareup.picasso.Picasso;
 
@@ -47,14 +48,7 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
         holder.userName.setText(picture.getUserName());
         holder.timeCard.setText(picture.getTime());
         holder.likeNumberCard.setText(picture.getLikeNumber());
-        Picasso.with(this.activity)
-                .load(picture.getPictureUrl())
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.placeholder)
-               // .resize(50, 50)
-               // .centerCrop()
-                .into(holder.pictureCard);
-
+        Helper.LoadImage(this.activity, picture.getPictureUrl() ,holder.pictureCard, null, null);
         // set on click
         holder.pictureCard.setOnClickListener(new View.OnClickListener() {
             @Override
