@@ -1,9 +1,10 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.knowme.knowme.view.fragment.HomeFragment">
+    tools:context="com.knowme.knowme.post.view.HomeFragment">
 
     <include layout="@layout/actionbar_toolbar"></include>
     <LinearLayout
@@ -26,7 +27,7 @@
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/home_floating_button"
+        android:id="@+id/camera_floating_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.knowme.knowme.R;
-import com.knowme.knowme.view.fragment.HomeFragment;
+import com.knowme.knowme.post.view.HomeFragment;
 import com.knowme.knowme.view.fragment.ProfileFragment;
 import com.knowme.knowme.view.fragment.SearchFragment;
 
