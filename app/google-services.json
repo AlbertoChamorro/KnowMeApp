@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "888275458995",
+    "firebase_url": "https://knowme-837a8.firebaseio.com",
+    "project_id": "knowme-837a8",
+    "storage_bucket": "knowme-837a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888275458995:android:df959951c8ccc296",
+        "android_client_info": {
+          "package_name": "com.knowme.knowme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888275458995-o5e09ql74gmtfuudahfiv9vmudg3fnuv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.knowme.knowme",
+            "certificate_hash": "3749ab4bfeb4676db1e20d1628eb4140579f6e15"
+          }
+        },
+        {
+          "client_id": "888275458995-s5maicm7inf85bjt3ei3tiqvccjgr9ub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJISQIQH5ciSr7TrjpE6B5AAitt9sJZPo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888275458995-s5maicm7inf85bjt3ei3tiqvccjgr9ub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
