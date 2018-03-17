@@ -32,9 +32,8 @@ public class HomeDetailActivity extends AppCompatActivity {
         CollapsingToolbarLayout collapsing = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        finish();
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public void onBackPressed() {
+
+    }
 }
