@@ -1,6 +1,9 @@
 package com.knowme.knowme.auth.interactor;
 
 
+import android.app.Activity;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.knowme.knowme.auth.presenter.ILoginPresenter;
 import com.knowme.knowme.auth.repository.ILoginRepository;
 import com.knowme.knowme.auth.repository.LoginRepository;
@@ -20,9 +23,9 @@ public class LoginInteractor implements ILoginInteractor {
     }
 
     @Override
-    public void signIn(String username, String password) {
+    public void signIn(String username, String password, Activity activity, FirebaseAuth firebaseAuth) {
         if(!username.equals("") && !password.equals("")) {
-            this.loginRepository.signIn(username, password);
+            this.loginRepository.signIn(username, password, activity, firebaseAuth);
             return;
         }
 

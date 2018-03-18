@@ -7,6 +7,8 @@ import android.view.View;
  */
 public interface ILoginView {
 
+    void login();
+
     void createNewAccount(View view);
 
     void goHome();

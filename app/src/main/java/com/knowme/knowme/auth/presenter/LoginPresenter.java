@@ -1,5 +1,8 @@
 package com.knowme.knowme.auth.presenter;
 
+import android.app.Activity;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.knowme.knowme.auth.interactor.ILoginInteractor;
 import com.knowme.knowme.auth.interactor.LoginInteractor;
 import com.knowme.knowme.auth.view.ILoginView;
@@ -19,10 +22,10 @@ public class LoginPresenter implements ILoginPresenter {
     }
 
     @Override
-    public void signIn(String username, String password) {
+    public void signIn(String username, String password, Activity activity, FirebaseAuth firebaseAuth) {
         loginView.toogleEnabledComponents(false);
         loginView.toogleProgressBar(true);
-        loginInteractor.signIn(username, password);
+        loginInteractor.signIn(username, password, activity, firebaseAuth);
     }
 
     @Override

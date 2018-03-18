@@ -2,15 +2,19 @@ package com.knowme.knowme.auth.view;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.knowme.knowme.R;
 import com.knowme.knowme.auth.presenter.ILoginPresenter;
 import com.knowme.knowme.auth.presenter.LoginPresenter;
@@ -19,14 +23,17 @@ import com.knowme.knowme.view.MainActivity;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView {
 
+    private static final String TAG = "Login Activity";
     private TextInputEditText usernameEditText;
     private TextInputEditText passwordEditText;
     private TextView create_account_here;
     private Button loginButton;
     private ProgressBar progressBar;
     private ILoginPresenter loginPresenter;
-
     private TextView nameAppTextView;
+
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +53,46 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
 
             @Override
             public void onClick(View view) {
-                loginPresenter.signIn(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+                login();
             }
         });
 
         this.nameAppTextView = (TextView) findViewById(R.id.name_app_textView);
         //R.color.colorPrimaryDark
        // this.nameAppTextView.setShadowLayer(30, 0, 0, Color.RED);
+
+        // init var config firebase
+        this.firebaseAuth = FirebaseAuth.getInstance();
+        this.authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                if (firebaseUser != null){
+                    Log.w(TAG, "User Logged - " + firebaseUser.getEmail());
+                }else{
+                    Log.w(TAG, "User Not Logged.");
+                }
+            }
+        };
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(authStateListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        firebaseAuth.removeAuthStateListener(authStateListener);
+    }
+
+    @Override
+    public void login() {
+        String username = usernameEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+        loginPresenter.signIn(username, password, this, firebaseAuth);
     }
 
     @Override
