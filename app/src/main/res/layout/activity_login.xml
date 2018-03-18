@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.knowme.knowme.login.view.LoginActivity">
+    tools:context="com.knowme.knowme.auth.view.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

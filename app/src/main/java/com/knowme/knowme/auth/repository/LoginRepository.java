@@ -1,20 +1,19 @@
-package com.knowme.knowme.login.repository;
+package com.knowme.knowme.auth.repository;
 
-import android.graphics.Color;
 import android.os.Handler;
 
-import com.knowme.knowme.login.presenter.LoginPresenter;
+import com.knowme.knowme.auth.presenter.ILoginPresenter;
 
 
 /**
  * Created by coredeveloper on 3/11/18.
  */
 
-public class LoginRepositoryImpl implements  LoginRepository {
+public class LoginRepository implements ILoginRepository {
 
-    private LoginPresenter loginPresenter;
+    private ILoginPresenter loginPresenter;
 
-    public LoginRepositoryImpl(LoginPresenter loginPresenter) {
+    public LoginRepository(ILoginPresenter loginPresenter) {
         this.loginPresenter = loginPresenter;
     }
 

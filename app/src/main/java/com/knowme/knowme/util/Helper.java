@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.knowme.knowme.R;
 import com.squareup.picasso.Picasso;
@@ -32,5 +33,10 @@ public class Helper {
                 // .resize(50, 50)
                 // .centerCrop()
                 .into(container);
+    }
+
+    public static void showToast(Activity context, String message, int time){
+
+        Toast.makeText(context, message, time).show();
     }
 }

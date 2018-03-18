@@ -1,21 +1,21 @@
-package com.knowme.knowme.login.presenter;
+package com.knowme.knowme.auth.presenter;
 
-import com.knowme.knowme.login.interactor.LoginInteractor;
-import com.knowme.knowme.login.interactor.LoginInteractorImpl;
-import com.knowme.knowme.login.view.LoginView;
+import com.knowme.knowme.auth.interactor.ILoginInteractor;
+import com.knowme.knowme.auth.interactor.LoginInteractor;
+import com.knowme.knowme.auth.view.ILoginView;
 
 /**
  * Created by coredeveloper on 3/11/18.
  */
 
-public class LoginPresenterImpl implements  LoginPresenter {
+public class LoginPresenter implements ILoginPresenter {
 
-    private LoginView loginView;
-    private LoginInteractor loginInteractor;
+    private ILoginView loginView;
+    private ILoginInteractor loginInteractor;
 
-    public LoginPresenterImpl(LoginView loginView){
+    public LoginPresenter(ILoginView loginView){
         this.loginView = loginView;
-        this.loginInteractor = new LoginInteractorImpl(this);
+        this.loginInteractor = new LoginInteractor(this);
     }
 
     @Override

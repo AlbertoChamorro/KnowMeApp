@@ -1,11 +1,11 @@
-package com.knowme.knowme.login.view;
+package com.knowme.knowme.auth.view;
 
 import android.view.View;
 
 /**
  * Created by coredeveloper on 3/11/18.
  */
-public interface LoginView {
+public interface ILoginView {
 
     void createNewAccount(View view);
 

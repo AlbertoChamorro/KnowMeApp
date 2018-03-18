@@ -29,7 +29,7 @@
                 ></meta-data>
         </provider>
 
-        <activity android:name=".login.view.LoginActivity">
+        <activity android:name=".auth.view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,11 +38,11 @@
         </activity>
 
         <activity
-            android:name=".view.CreateAccountActivity"
-            android:parentActivityName=".login.view.LoginActivity">
+            android:name=".auth.view.CreateAccountActivity"
+            android:parentActivityName=".auth.view.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".login.view.LoginActivity" />
+                android:value=".auth.view.LoginActivity" />
         </activity>
 
         <activity android:name=".view.MainActivity" />

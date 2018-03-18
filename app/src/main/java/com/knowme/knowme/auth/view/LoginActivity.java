@@ -1,7 +1,6 @@
-package com.knowme.knowme.login.view;
+package com.knowme.knowme.auth.view;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -13,20 +12,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.knowme.knowme.R;
-import com.knowme.knowme.login.presenter.LoginPresenter;
-import com.knowme.knowme.login.presenter.LoginPresenterImpl;
+import com.knowme.knowme.auth.presenter.ILoginPresenter;
+import com.knowme.knowme.auth.presenter.LoginPresenter;
 import com.knowme.knowme.util.Helper;
-import com.knowme.knowme.view.CreateAccountActivity;
 import com.knowme.knowme.view.MainActivity;
 
-public class LoginActivity extends AppCompatActivity implements LoginView{
+public class LoginActivity extends AppCompatActivity implements ILoginView {
 
     private TextInputEditText usernameEditText;
     private TextInputEditText passwordEditText;
     private TextView create_account_here;
     private Button loginButton;
     private ProgressBar progressBar;
-    private LoginPresenter loginPresenter;
+    private ILoginPresenter loginPresenter;
 
     private TextView nameAppTextView;
 
@@ -42,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
         this.create_account_here.setText(Helper.underlineText(this.create_account_here.getText().toString()));
 
-        this.loginPresenter = new LoginPresenterImpl(this);
+        this.loginPresenter = new LoginPresenter(this);
         this.toogleProgressBar(false);
         this.loginButton.setOnClickListener(new View.OnClickListener(){
 
@@ -77,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     @Override
     public void loginError(String error) {
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        Helper.showToast(this, error, Toast.LENGTH_LONG);
     }
 
     @Override
