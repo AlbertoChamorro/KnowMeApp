@@ -19,8 +19,6 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
 
     private static final String TAG = "Create Account Activity";
     private Toolbar toolbar;
-//    private FirebaseAuth firebaseAuth;
-//    private FirebaseAuth.AuthStateListener authStateListener;
 
     private TextInputEditText emailTextInputEditText, nameTextInputEditText, user_nameTextInputEditText,
             passwordTextInputEditText, confirm_passwordTextInputEditText;
@@ -36,19 +34,6 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
 
         this.createAccountPresenter = new CreateAccountPresenter(this);
         this.showToolbar(getResources().getString(R.string.text_create_account), true);
-
-        //this.firebaseAuth = FirebaseAuth.getInstance();
-//        this.authStateListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-//                if (firebaseUser != null){
-//                    Log.w(TAG, "User Logged - " + firebaseUser.getEmail());
-//                }else{
-//                    Log.w(TAG, "User Not Logged.");
-//                }
-//            }
-//        };
 
         this.emailTextInputEditText = (TextInputEditText) findViewById(R.id.email);
         this.nameTextInputEditText = (TextInputEditText) findViewById(R.id.name);
@@ -110,18 +95,6 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
         this.confirm_passwordTextInputEditText.setEnabled(state);
         this.joinUsButton.setEnabled(state);
     }
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        firebaseAuth.addAuthStateListener(authStateListener);
-//    }
-
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        firebaseAuth.removeAuthStateListener(authStateListener);
-//    }
 
     @Override
     public void toogleProgressBar(Boolean state) {
