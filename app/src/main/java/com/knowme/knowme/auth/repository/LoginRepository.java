@@ -48,7 +48,7 @@ public class LoginRepository implements ILoginRepository {
                     loginPresenter.signInSuccess();
                     return;
                 }
-                loginPresenter.signInError("Intente luego, ha ocurrido un error.");
+                loginPresenter.signInError(task.getException().getMessage());
             }
         });
     }

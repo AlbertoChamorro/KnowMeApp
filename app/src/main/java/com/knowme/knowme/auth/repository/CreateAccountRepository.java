@@ -33,7 +33,7 @@ public class CreateAccountRepository implements ICreateAccountRepository {
                             if (task.isSuccessful()){
                                 createAccountPresenter.createAccountSuccess("Cuenta creada correctamente.");
                             }else{
-                                createAccountPresenter.createAccountError("Ocurrio un error intente de nuevo más tarde.");
+                                createAccountPresenter.createAccountError(task.getException().getMessage());
                             }
                         }
                     });
