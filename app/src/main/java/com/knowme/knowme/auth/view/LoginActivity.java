@@ -1,8 +1,10 @@
 package com.knowme.knowme.auth.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +33,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     private ProgressBar progressBar;
     private ILoginPresenter loginPresenter;
     private TextView nameAppTextView;
+    private View viewContainer;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -39,6 +42,8 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        this.viewContainer = (View) findViewById(R.id.container);
         this.usernameEditText = (TextInputEditText) findViewById(R.id.user_name);
         this.passwordEditText = (TextInputEditText) findViewById(R.id.password);
         this.loginButton = (Button) findViewById(R.id.login_button);
@@ -115,7 +120,10 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
 
     @Override
     public void loginError(String error) {
-        Helper.showToast(this, error, Toast.LENGTH_LONG);
+        //Helper.showToast(this, error, Toast.LENGTH_LONG);
+        Helper.showSnackBar(this.viewContainer, error, Snackbar.LENGTH_LONG,
+                            getResources().getColor(R.color.colorWhite),
+                            getResources().getColor(R.color.colorPrimary));
     }
 
     @Override

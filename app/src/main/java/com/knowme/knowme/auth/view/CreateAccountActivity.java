@@ -1,6 +1,8 @@
 package com.knowme.knowme.auth.view;
 
+import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +26,7 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
             passwordTextInputEditText, confirm_passwordTextInputEditText;
     private Button joinUsButton;
     private ProgressBar mProgressBar;
+    private View viewContainer;
 
     private CreateAccountPresenter createAccountPresenter;
 
@@ -35,6 +38,7 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
         this.createAccountPresenter = new CreateAccountPresenter(this);
         this.showToolbar(getResources().getString(R.string.text_create_account), true);
 
+        this.viewContainer = (View) findViewById(R.id.container);
         this.emailTextInputEditText = (TextInputEditText) findViewById(R.id.email);
         this.nameTextInputEditText = (TextInputEditText) findViewById(R.id.name);
         this.user_nameTextInputEditText = (TextInputEditText) findViewById(R.id.user_name);
@@ -48,9 +52,20 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
         this.joinUsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createNewAccount();
+                //view.postDelayed()
+                view.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        createNewAccount();
+                    }
+                });
             }
         });
+    }
+
+    public void test() {
+        Toast toast = Toast.makeText(this, "Debe llenar los campos.", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     @Override
@@ -83,7 +98,10 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
 
     @Override
     public void createAcccountError(String error) {
-        Helper.showToast(this, error , Toast.LENGTH_LONG);
+        //Helper.showToast(this, error , Toast.LENGTH_LONG);
+        Helper.showSnackBar(this.viewContainer, error, Snackbar.LENGTH_LONG,
+                getResources().getColor(R.color.colorWhite),
+                getResources().getColor(R.color.colorPrimary));
     }
 
     @Override
