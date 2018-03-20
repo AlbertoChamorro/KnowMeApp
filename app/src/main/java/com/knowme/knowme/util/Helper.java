@@ -1,7 +1,10 @@
 package com.knowme.knowme.util;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.View;
@@ -64,5 +67,15 @@ public class Helper {
         textView.setTextColor(colorText);
 
         snackbar.show();
+    }
+
+    public static <T> void showFragment(AppCompatActivity activity, T fragment, int containerViewId) {
+
+        activity.getSupportFragmentManager()
+                .beginTransaction()
+                .replace(containerViewId, (Fragment) fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .addToBackStack(null)
+                .commit();
     }
 }

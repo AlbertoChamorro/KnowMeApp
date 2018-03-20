@@ -1,46 +1,45 @@
 package com.knowme.knowme.view;
 
-import android.app.FragmentTransaction;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.knowme.knowme.R;
 import com.knowme.knowme.post.view.HomeFragment;
+import com.knowme.knowme.util.Helper;
 import com.knowme.knowme.view.fragment.ProfileFragment;
 import com.knowme.knowme.view.fragment.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
+
+    private int selectedTab = R.id.menu_home;
+    private Boolean firstRun = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomBar = (BottomNavigationView) findViewById(R.id.navigation);
-        this.initBottomNavigation(bottomBar);
-        bottomBar.setSelectedItemId(R.id.menu_home);
+        this.setListenerBottomNavigationViewSelected(bottomBar);
+        bottomBar.setSelectedItemId(selectedTab);
     }
 
-    public void initBottomNavigation(BottomNavigationView view) {
+    public void setListenerBottomNavigationViewSelected(BottomNavigationView view) {
         view.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.menu_home:
-                                    item.setChecked(true);
-                                    showFragment(new HomeFragment(), R.id.tab_container_fragment);
+                                    selectedTapBottomBottomView(R.id.tab_container_fragment, item, R.id.menu_home, new HomeFragment());
                                 break;
                             case R.id.menu_search:
-                                    item.setChecked(true);
-                                    showFragment(new SearchFragment(), R.id.tab_container_fragment);
+                                    selectedTapBottomBottomView(R.id.tab_container_fragment, item, R.id.menu_search, new SearchFragment());
                                 break;
                             case R.id.menu_profile:
-                                    item.setChecked(true);
-                                    showFragment(new ProfileFragment(), R.id.tab_container_fragment);
+                                    selectedTapBottomBottomView(R.id.tab_container_fragment, item, R.id.menu_profile, new ProfileFragment());
                                 break;
                         }
                         return false;
@@ -48,25 +47,18 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    @Override
-    public void onBackPressed() {
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        }
-//        if (!viewIsAtHome) { //if the current view is not the News fragment
-//            displayView(R.id.nav_news); //display the News fragment
-//        } else {
-//            moveTaskToBack(true);  //If view is in News fragment, exit application
-//        }
+    private <T> void selectedTapBottomBottomView (int containerViewId, MenuItem menuItem, int selectedResourceTapId, T fragmentToShow){
+
+        if (firstRun || selectedTab != menuItem.getItemId()) {
+            menuItem.setChecked(true);
+            Helper.showFragment(this, fragmentToShow, containerViewId);
+            firstRun = false;
+            selectedTab = selectedResourceTapId;
+        }
     }
 
-    public <T> void showFragment(T fragment, int containerId) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(containerId, (Fragment) fragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack(null)
-                .commit();
+    @Override
+    public void onBackPressed() {
+
     }
 }
