@@ -17,6 +17,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.knowme.knowme.R;
 import com.knowme.knowme.adapter.PictureAdapterRecyclerView;
@@ -38,6 +40,11 @@ public class HomeFragment extends Fragment {
     private FloatingActionButton cameraFloatingButton;
     private String photoPathTemp = "";
 
+    private Toolbar toolbar;
+    private TextView titleToolbar;
+    private ImageView imageLeftToolbar;
+    private ImageView imageRightToolbar;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -48,6 +55,10 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        // toolbar
+        //this.showToolbar(getResources().getString(R.string.text_home_bottombar),false, view);
+        this.setupToolbar(view);
+
         this.cameraFloatingButton = (FloatingActionButton) view.findViewById(R.id.camera_floating_button);
         this.cameraFloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +66,6 @@ public class HomeFragment extends Fragment {
                 takePicture();
             }
         });
-        this.showToolbar(getResources().getString(R.string.text_home_bottombar),false, view);
 
         RecyclerView picturesRecylcler = (RecyclerView) view.findViewById(R.id.pictureCardRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -133,10 +143,41 @@ public class HomeFragment extends Fragment {
        return pictures;
     }
 
-    public void showToolbar(String title, Boolean showBackButton, View view) {
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(title);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(showBackButton);
+//    public void showToolbar(String title, Boolean showBackButton, View view) {
+//        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+//        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+//        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(title);
+//        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(showBackButton);
+//    }
+
+    private void setupToolbar(View view){
+
+        //this.toolbar = (Toolbar) findViewById(R.id.toolbar);
+        this.titleToolbar = (TextView) view.findViewById(R.id.title_toolbar);
+        this.titleToolbar.setText(getResources().getString(R.string.app_name));
+
+        this.imageLeftToolbar = (ImageView) view.findViewById(R.id.left_image_toolbar);
+        this.imageLeftToolbar.setBackgroundResource(R.drawable.ic_action_menu);
+        this.imageLeftToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //onBackPressed();
+            }
+        });
+
+        this.imageRightToolbar = (ImageView) view.findViewById(R.id.right_image_toolbar);
+        this.imageRightToolbar.setBackgroundResource(R.drawable.ic_action_logout);
+        this.imageRightToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //onBackPressed();
+            }
+        });
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        finish();
+//    }
 }

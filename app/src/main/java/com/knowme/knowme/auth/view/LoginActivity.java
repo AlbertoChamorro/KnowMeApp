@@ -77,6 +77,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
                 }
             }
         };
+
+        // for testing app
+        this.mockData();
+    }
+
+    private void mockData() {
+        this.usernameEditText.setText("albertchc04@gmail.com");
+        this.passwordEditText.setText("22122009");
     }
 
     @Override
@@ -112,7 +120,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
 
     @Override
     public void redirectToWebPage(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.marca.com"));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
         startActivity(intent);
     }
 

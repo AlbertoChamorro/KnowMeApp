@@ -24,7 +24,7 @@
         <item name="android:textColorPrimary">@color/colorWhite</item>
         <item name="colorControlNormal">@color/colorWhite</item>
         <item name="colorControlActivated">@color/colorWhite</item>
-        <item name="android:textColorHint">@color/colorLigthGray</item>
+        <item name="android:textColorHint">@color/colorWhite</item>
     </style>
 
     <style name="EditTextBlack" parent="TextAppearance.AppCompat.Medium">
@@ -33,7 +33,8 @@
         <item name="android:textColorPrimary">@color/colorBlack</item>
         <item name="colorControlNormal">@color/colorBlack</item>
         <item name="colorControlActivated">@color/colorBlack</item>
-        <item name="android:textColorHint">@color/colorPrimary</item>
+        <!--<item name="android:activatedBackgroundIndicator">@color/colorPrimary</item>-->
+        <item name="android:textColorHint">@color/colorBlack</item>
     </style>
 
 </resources>
