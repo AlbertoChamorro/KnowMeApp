@@ -12,9 +12,9 @@ public interface ICreateAccountView {
 
     void createAcccountError(String error);
 
-    void toogleEnabledComponents(Boolean state);
+    void toggleEnabledComponents(Boolean state);
 
-    void toogleProgressBar(Boolean state);
+    void toggleProgressBar(Boolean state);
 
     void goToLogin(String message);
 }

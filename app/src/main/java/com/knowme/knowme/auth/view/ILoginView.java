@@ -17,7 +17,7 @@ public interface ILoginView {
 
     void loginError(String error);
 
-    void toogleEnabledComponents(Boolean state);
+    void toggleEnabledComponents(Boolean state);
 
-    void toogleProgressBar(Boolean state);
+    void toggleProgressBar(Boolean state);
 }

@@ -1,6 +1,5 @@
 package com.knowme.knowme.auth.view;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
@@ -47,7 +46,7 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
 
         this.joinUsButton = (Button) findViewById(R.id.joinUsButton);
         this.mProgressBar = (ProgressBar) findViewById(R.id.progress_bar_create_account);
-        this.toogleProgressBar(false);
+        this.toggleProgressBar(false);
 
         this.joinUsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +63,7 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
     }
 
     public void test() {
-        Toast toast = Toast.makeText(this, "Debe llenar los campos.", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this, "Los campos son requeridos.", Toast.LENGTH_SHORT);
         toast.show();
     }
 
@@ -78,12 +77,12 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
         String confirmPassword = confirm_passwordTextInputEditText.getText().toString();
 
         if(email.equals("") || name.equals("") || userName.equals("") || password.equals("")){
-            Helper.showToast(this, "Debe llenar los campos." , Toast.LENGTH_LONG);
+            Helper.showToast(this, "Los campos son requeridos." , Toast.LENGTH_LONG);
             return;
         }
 
         if(confirmPassword.equals("")){
-            Helper.showToast(this, "Debe confirmar su contraseña." , Toast.LENGTH_LONG);
+            Helper.showToast(this, "Confirme su contraseña." , Toast.LENGTH_LONG);
             return;
         }
 
@@ -105,7 +104,7 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
     }
 
     @Override
-    public void toogleEnabledComponents(Boolean state) {
+    public void toggleEnabledComponents(Boolean state) {
         this.emailTextInputEditText.setEnabled(state);
         this.nameTextInputEditText.setEnabled(state);
         this.user_nameTextInputEditText.setEnabled(state);
@@ -115,7 +114,7 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
     }
 
     @Override
-    public void toogleProgressBar(Boolean state) {
+    public void toggleProgressBar(Boolean state) {
 
         int stateVisibility = state == true ? View.VISIBLE : View.GONE;
         this.mProgressBar.setVisibility(stateVisibility);

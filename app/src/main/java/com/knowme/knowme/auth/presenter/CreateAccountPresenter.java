@@ -22,23 +22,23 @@ public class CreateAccountPresenter implements ICreateAccountPresenter {
 
     @Override
     public void createAccount(User user, Activity activity) {
-        createAccountView.toogleEnabledComponents(false);
-        createAccountView.toogleProgressBar(true);
+        createAccountView.toggleEnabledComponents(false);
+        createAccountView.toggleProgressBar(true);
         createAccountInteractor.createAccount(user, activity);
     }
 
     @Override
     public void createAccountSuccess(String message) {
-        createAccountView.toogleEnabledComponents(true);
-        createAccountView.toogleProgressBar(false);
+        createAccountView.toggleEnabledComponents(true);
+        createAccountView.toggleProgressBar(false);
         // go to login view
         createAccountView.goToLogin(message);
     }
 
     @Override
     public void createAccountError(String error) {
-        createAccountView.toogleEnabledComponents(true);
-        createAccountView.toogleProgressBar(false);
+        createAccountView.toggleEnabledComponents(true);
+        createAccountView.toggleProgressBar(false);
         createAccountView.createAcccountError(error);
     }
 }

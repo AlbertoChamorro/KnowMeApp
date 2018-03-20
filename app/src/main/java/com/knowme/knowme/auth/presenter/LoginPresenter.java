@@ -23,22 +23,22 @@ public class LoginPresenter implements ILoginPresenter {
 
     @Override
     public void signIn(String username, String password, Activity activity, FirebaseAuth firebaseAuth) {
-        loginView.toogleEnabledComponents(false);
-        loginView.toogleProgressBar(true);
+        loginView.toggleEnabledComponents(false);
+        loginView.toggleProgressBar(true);
         loginInteractor.signIn(username, password, activity, firebaseAuth);
     }
 
     @Override
     public void signInSuccess() {
-        loginView.toogleEnabledComponents(true);
-        loginView.toogleProgressBar(false);
+        loginView.toggleEnabledComponents(true);
+        loginView.toggleProgressBar(false);
         loginView.goHome();
     }
 
     @Override
     public void signInError(String error) {
-        loginView.toogleEnabledComponents(true);
-        loginView.toogleProgressBar(false);
+        loginView.toggleEnabledComponents(true);
+        loginView.toggleProgressBar(false);
         loginView.loginError(error);
     }
 }

@@ -1,7 +1,6 @@
 package com.knowme.knowme.auth.view;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -53,7 +51,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         this.create_account_here.setText(Helper.underlineText(this.create_account_here.getText().toString()));
 
         this.loginPresenter = new LoginPresenter(this);
-        this.toogleProgressBar(false);
+        this.toggleProgressBar(false);
         this.loginButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -127,14 +125,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
-    public void toogleEnabledComponents(Boolean state) {
+    public void toggleEnabledComponents(Boolean state) {
         this.usernameEditText.setEnabled(state);
         this.passwordEditText.setEnabled(state);
         this.loginButton.setEnabled(state);
     }
 
     @Override
-    public void toogleProgressBar(Boolean state) {
+    public void toggleProgressBar(Boolean state) {
 
         int stateVisibility = state == true ? View.VISIBLE : View.GONE;
         this.progressBar.setVisibility(stateVisibility);
