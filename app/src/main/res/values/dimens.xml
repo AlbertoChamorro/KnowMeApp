@@ -5,6 +5,7 @@
     <dimen name="textSizeBig">24sp</dimen>
     <dimen name="paddingHorizontal">32dp</dimen>
     <dimen name="default_space">8dp</dimen>
+    <dimen name="margin_ic_toolbar">2dp</dimen>
     <dimen name="separator">4dp</dimen>
     <dimen name="height_picture_cardview">200dp</dimen>
     <dimen name="cardview_corner_radius">10dp</dimen>
@@ -19,5 +20,7 @@
     <dimen name="imageSizeLogo">56dp</dimen>
     <dimen name="font_size_small">14dp</dimen>
     <dimen name="font_size_default">16dp</dimen>
+    <dimen name="font_size_medium">18dp</dimen>
+    <dimen name="font_size_toolbar">20dp</dimen>
 
 </resources>

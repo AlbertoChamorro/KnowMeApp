@@ -37,23 +37,11 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".auth.view.CreateAccountActivity"
-            android:parentActivityName=".auth.view.LoginActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".auth.view.LoginActivity" />
-        </activity>
+        <activity android:name=".auth.view.CreateAccountActivity"></activity>
 
         <activity android:name=".view.MainActivity" />
 
-        <activity
-            android:name=".view.HomeDetailActivity"
-            android:parentActivityName=".view.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.MainActivity" />
-        </activity>
+        <activity android:name=".view.HomeDetailActivity"></activity>
 
         <activity android:name=".post.view.NewPostActivity"></activity>
 
