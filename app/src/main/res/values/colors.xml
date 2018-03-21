@@ -2,10 +2,17 @@
 <resources>
     <color name="colorPrimary">#009688</color>
     <color name="colorPrimaryDark">#00796B</color>
+    <!-- #00796B -->
+    <!-- #007681 -->
     <color name="colorAccent">#FFC107</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorTransparent">#53292929</color>
     <color name="colorBlack">#000000</color>
     <color name="colorLigthGray">#CFD8DC</color>
+    <color name="colorDarkGray">#595959</color>
+    <color name="colorRed">#C8102E</color>
+    <color name="colorBlue">#005F86</color>
+    <color name="colorOrange">#ff7500</color>
+    <color name="colorSkin">#EDF3F8</color>
     <!-- #F4FF81 A100 -->
 </resources>

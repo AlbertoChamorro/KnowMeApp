@@ -1,13 +1,20 @@
 package com.knowme.knowme.util;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,5 +84,39 @@ public class Helper {
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    public static void builderDialog(Context context, String title, String message,
+                                     String textButtonOk, String textButtonCancel){
+
+        AlertDialog.Builder builderDialog = new AlertDialog.Builder(context);
+        builderDialog.setTitle(title);
+        builderDialog.setMessage(message);
+
+        Drawable icon = context.getResources().getDrawable(R.drawable.ic_action_message_dialog);
+        builderDialog.setIcon(icon);
+        // TODO: divider line
+
+        builderDialog.setPositiveButton(textButtonOk, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog,int which) {
+
+                dialog.dismiss();
+            }
+        });
+
+        builderDialog.setNegativeButton(textButtonCancel,new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog dialog = builderDialog.create();
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(context.getResources().getColor(R.color.colorPrimary));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(context.getResources().getColor(R.color.colorRed));
+
     }
 }

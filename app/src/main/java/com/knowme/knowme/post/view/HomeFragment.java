@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.knowme.knowme.R;
 import com.knowme.knowme.adapter.PictureAdapterRecyclerView;
 import com.knowme.knowme.model.Picture;
+import com.knowme.knowme.util.Helper;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +34,7 @@ import java.util.Date;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment{
 
 
     private static final int REQUEST_CAMERA_IDENTIFIER = 1;
@@ -171,8 +172,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //onBackPressed();
+                builderDialog();
             }
         });
+    }
+
+    private void builderDialog(){
+        // ¿ = shift + alt + ?, Nº
+        Helper.builderDialog(getActivity(), "Mensaje", "¿Desea cerrar sesión?", "Aceptar", "Cancelar");
     }
 
 //    @Override
@@ -180,4 +187,6 @@ public class HomeFragment extends Fragment {
 //        super.onBackPressed();
 //        finish();
 //    }
+
+
 }
