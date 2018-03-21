@@ -54,19 +54,15 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, HomeDetailActivity.class);
-               if (Build.VERSION.SDK_INT  >= Build.VERSION_CODES.LOLLIPOP) {
-
-                   Explode explode = new Explode();
-                   explode.setDuration(1000);
-                   activity.getWindow().setExitTransition(explode);
-                   activity.startActivity(intent,
-                                            ActivityOptionsCompat
-                                                        .makeSceneTransitionAnimation(activity,
-                                                                 view,
-                                                                activity.getString(R.string.transition_fade)).toBundle());
-               }else {
+//               if (Build.VERSION.SDK_INT  >= Build.VERSION_CODES.LOLLIPOP) {
+//
+//                   Explode explode = new Explode();
+//                   explode.setDuration(500);
+//                   activity.getWindow().setExitTransition(explode);
+//                   activity.startActivity(intent, explode);
+//               }else {
                     activity.startActivity(intent);
-               }
+//               }
             }
         });
     }
