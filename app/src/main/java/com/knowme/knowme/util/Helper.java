@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.knowme.knowme.R;
+import com.knowme.knowme.util.interfaces.IAlertDialog;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -86,37 +87,53 @@ public class Helper {
                 .commit();
     }
 
-    public static void builderDialog(Context context, String title, String message,
-                                     String textButtonOk, String textButtonCancel){
+    public static AlertDialog.Builder setupDialog(Context context, String title, String message, Boolean touchOutSide , Drawable iconResource){
 
         AlertDialog.Builder builderDialog = new AlertDialog.Builder(context);
         builderDialog.setTitle(title);
         builderDialog.setMessage(message);
+        builderDialog.setCancelable(touchOutSide == null ? false : touchOutSide);
 
-        Drawable icon = context.getResources().getDrawable(R.drawable.ic_action_message_dialog);
-        builderDialog.setIcon(icon);
+        if (iconResource != null) {
+            Drawable icon = context.getResources().getDrawable(R.drawable.ic_action_message_dialog);
+            builderDialog.setIcon(icon);
+        }
         // TODO: divider line
 
-        builderDialog.setPositiveButton(textButtonOk, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog,int which) {
+        return builderDialog;
+    }
 
-                dialog.dismiss();
-            }
-        });
+    public static void builOptionButtonDialog(AlertDialog.Builder builderDialog,String textButton,
+                                        Boolean isOkAction, final IAlertDialog managerDialog){
 
-        builderDialog.setNegativeButton(textButtonCancel,new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        if (isOkAction) {
+            builderDialog.setPositiveButton(textButton, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    managerDialog.okAction(dialog, which);
+                }
+            });
+        }else{
+            builderDialog.setNegativeButton(textButton,new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    managerDialog.cancelAction(dialog, which);
+                }
+            });
+        }
+    }
 
-        AlertDialog dialog = builderDialog.create();
-        dialog.show();
+    public static AlertDialog createDialog(AlertDialog.Builder builderDialog){
 
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(context.getResources().getColor(R.color.colorPrimary));
-        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(context.getResources().getColor(R.color.colorRed));
+         AlertDialog dialog = builderDialog.create();
+         dialog.show();
 
+         return dialog;
+    }
+
+    public static void customOptionButtonColor(AlertDialog dialog, Context context, int textColor, Boolean isOkAction){
+
+        int optionButton = isOkAction ? AlertDialog.BUTTON_POSITIVE : AlertDialog.BUTTON_NEGATIVE;
+        dialog.getButton(optionButton).setTextColor(context.getResources().getColor(textColor));
     }
 }

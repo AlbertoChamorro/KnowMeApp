@@ -1,6 +1,7 @@
 package com.knowme.knowme.post.view;
 
-
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,7 +10,6 @@ import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +24,7 @@ import com.knowme.knowme.R;
 import com.knowme.knowme.adapter.PictureAdapterRecyclerView;
 import com.knowme.knowme.model.Picture;
 import com.knowme.knowme.util.Helper;
+import com.knowme.knowme.util.interfaces.IAlertDialog;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,8 +35,20 @@ import java.util.Date;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment{
+public class HomeFragment extends Fragment {
 
+
+    private IAlertDialog iAlertDialog = new IAlertDialog() {
+        @Override
+        public void okAction(DialogInterface dialog, int which) {
+            getActivity().finish();
+        }
+
+        @Override
+        public void cancelAction(DialogInterface dialog,int which) {
+            dialog.cancel();
+        }
+    };
 
     private static final int REQUEST_CAMERA_IDENTIFIER = 1;
     private FloatingActionButton cameraFloatingButton;
@@ -85,15 +98,10 @@ public class HomeFragment extends Fragment{
         if (takeCameraIntent.resolveActivity(getActivity().getPackageManager()) != null){
 
             File photoFile = null;
-
             try {
-
                 photoFile = createPictureFile();
 
-
-            }catch (Exception e){
-
-            }
+            }catch (Exception e){}
 
             if (photoFile != null) {
                 // for getUriForFile is required create un resource xml file_path with paths allows, and added in manifest
@@ -171,22 +179,19 @@ public class HomeFragment extends Fragment{
         this.imageRightToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //onBackPressed();
                 builderDialog();
             }
         });
     }
 
     private void builderDialog(){
-        // ¿ = shift + alt + ?, Nº
-        Helper.builderDialog(getActivity(), "Mensaje", "¿Desea cerrar sesión?", "Aceptar", "Cancelar");
+        AlertDialog.Builder builderDialog = Helper.setupDialog(getActivity(), "Mensaje", "¿Desea cerrar sesión?", null, null);
+        Helper.builOptionButtonDialog(builderDialog, "Aceptar",
+                true, iAlertDialog);
+        Helper.builOptionButtonDialog(builderDialog, "Cancelar",
+                false, iAlertDialog);
+        AlertDialog dialog = Helper.createDialog(builderDialog);
+        Helper.customOptionButtonColor(dialog, getActivity(), R.color.colorPrimary, true);
+        Helper.customOptionButtonColor(dialog, getActivity(), R.color.colorRed, false);
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//        finish();
-//    }
-
-
 }
