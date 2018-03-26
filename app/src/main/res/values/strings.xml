@@ -22,4 +22,8 @@
     <string name="post_new_titleHint">Título</string>
     <string name="post_new_descriptionHint">Descripción</string>
     <string name="post_new_create_button">Crear Post</string>
+
+
+    <string name="facebook_app_id">967378216803667</string>
+    <string name="fb_login_protocol_scheme">fb967378216803667</string>
 </resources>
