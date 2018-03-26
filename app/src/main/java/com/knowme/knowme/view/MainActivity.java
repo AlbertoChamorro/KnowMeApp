@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.knowme.knowme.R;
 import com.knowme.knowme.post.view.HomeFragment;
@@ -69,12 +70,37 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupNavigationDrawer() {
         this.mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        //this.mDrawerLayout.closeDrawers();
-//        if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)){
-//            this.mDrawerLayout.closeDrawer(GravityCompat.START);
-//            return;
-//        }
-//        this.mDrawerLayout.openDrawer(GravityCompat.START);
+        this.setupDrawerNavigationView(mDrawerLayout);
+    }
+
+    private void setupDrawerNavigationView(DrawerLayout mDrawerLayout) {
+        this.mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
+        this.mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                selectDrawerItem(item);
+                return true;
+            }
+        });
+    }
+
+    private void selectDrawerItem(MenuItem item) {
+
+        switch(item.getItemId()) {
+            case R.id.locate_us:
+                Helper.showToast(this, "Function not implement, now in development", Toast.LENGTH_SHORT);
+                break;
+            case R.id.settings_account:
+                Helper.showToast(this, "Function not implement, soon", Toast.LENGTH_SHORT);
+                break;
+            case R.id.profile_account:
+                    Helper.showToast(this, "Function not implement", Toast.LENGTH_SHORT);
+                break;
+            default: break;
+        }
+
+        item.setChecked(true);
+        this.mDrawerLayout.closeDrawers();
     }
 
     public void setupBottomNavigationView() {
@@ -113,7 +139,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+//        if(){
+//
+//        }
     }
 
     private void setupToolbar(){

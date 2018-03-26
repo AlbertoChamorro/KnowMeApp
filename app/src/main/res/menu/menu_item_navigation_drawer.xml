@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
-        <item android:id="@+id/first_item"
+        <item android:id="@+id/locate_us"
             android:icon="@drawable/ic_action_home"
-            android:title="Item 1" />
-        <item android:id="@+id/second_item"
-            android:icon="@drawable/ic_action_home"
-            android:title="Item 2" />
+            android:title="Ver Localidades" />
     </group>
 
-    <group android:id="@+id/group_menu">
-        <item android:id="@+id/three_item"
-            android:title="Item 3" />
-        <item android:id="@+id/four_item"
-            android:title="Item 4" />
-    </group>
-
-    <item android:title="Title 1">
+    <item android:title="Configuraciones">
         <menu>
-            <item android:id="@+id/five_item"
+            <item android:id="@+id/settings_account"
                 android:icon="@drawable/ic_action_home"
-                android:title="Item 5" />
+                android:title="Privacidad" />
+            <item android:id="@+id/profile_account"
+                android:icon="@drawable/ic_action_home"
+                android:title="Ver Pérfil" />
         </menu>
     </item>
 </menu>
