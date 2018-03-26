@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <group>
         <item android:id="@+id/locate_us"
             android:icon="@drawable/ic_action_home"
@@ -16,4 +18,10 @@
                 android:title="Ver Pérfil" />
         </menu>
     </item>
+
+    <group>
+        <item android:id="@+id/biometric_auth"
+                app:actionLayout="@layout/action_view_switch"
+                android:title="Downloaded only" />
+    </group>
 </menu>
