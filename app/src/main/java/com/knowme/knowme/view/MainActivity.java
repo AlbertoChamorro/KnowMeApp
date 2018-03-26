@@ -155,9 +155,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        if(){
-//
-//        }
+        if(this.mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+            this.mDrawerLayout.closeDrawers();
+            return;
+        }
+
+        this.builderDialog();
     }
 
     private void setupToolbar(){
