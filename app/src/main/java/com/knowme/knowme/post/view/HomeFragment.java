@@ -1,7 +1,5 @@
 package com.knowme.knowme.post.view;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,19 +10,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.FileProvider;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.knowme.knowme.R;
 import com.knowme.knowme.adapter.PictureAdapterRecyclerView;
 import com.knowme.knowme.model.Picture;
-import com.knowme.knowme.util.Helper;
-import com.knowme.knowme.util.interfaces.IAlertDialog;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,27 +30,9 @@ import java.util.Date;
  */
 public class HomeFragment extends Fragment {
 
-
-    private IAlertDialog iAlertDialog = new IAlertDialog() {
-        @Override
-        public void okAction(DialogInterface dialog, int which) {
-            getActivity().finish();
-        }
-
-        @Override
-        public void cancelAction(DialogInterface dialog,int which) {
-            dialog.cancel();
-        }
-    };
-
     private static final int REQUEST_CAMERA_IDENTIFIER = 1;
     private FloatingActionButton cameraFloatingButton;
     private String photoPathTemp = "";
-
-    private Toolbar toolbar;
-    private TextView titleToolbar;
-    private ImageView imageLeftToolbar;
-    private ImageView imageRightToolbar;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -68,10 +43,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        // toolbar
-        //this.showToolbar(getResources().getString(R.string.text_home_bottombar),false, view);
-        this.setupToolbar(view);
 
         this.cameraFloatingButton = (FloatingActionButton) view.findViewById(R.id.camera_floating_button);
         this.cameraFloatingButton.setOnClickListener(new View.OnClickListener() {
@@ -150,48 +121,5 @@ public class HomeFragment extends Fragment {
                 "https://i2.wp.com/medioambienteynaturaleza.com/wp-content/uploads/2015/06/Fondos-de-pantalla-de-paisajes-naturales25.jpg","Josh Warren","3 días","50 Me gusta"
         ));
        return pictures;
-    }
-
-//    public void showToolbar(String title, Boolean showBackButton, View view) {
-//        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-//        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-//        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(title);
-//        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(showBackButton);
-//    }
-
-    private void setupToolbar(View view){
-
-        //this.toolbar = (Toolbar) findViewById(R.id.toolbar);
-        this.titleToolbar = (TextView) view.findViewById(R.id.title_toolbar);
-        this.titleToolbar.setText(getResources().getString(R.string.app_name));
-
-        this.imageLeftToolbar = (ImageView) view.findViewById(R.id.left_image_toolbar);
-        this.imageLeftToolbar.setBackgroundResource(R.drawable.ic_action_menu);
-        this.imageLeftToolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //onBackPressed();
-            }
-        });
-
-        this.imageRightToolbar = (ImageView) view.findViewById(R.id.right_image_toolbar);
-        this.imageRightToolbar.setBackgroundResource(R.drawable.ic_action_logout);
-        this.imageRightToolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                builderDialog();
-            }
-        });
-    }
-
-    private void builderDialog(){
-        AlertDialog.Builder builderDialog = Helper.setupDialog(getActivity(), "Mensaje", "¿Desea cerrar sesión?", null, null);
-        Helper.builOptionButtonDialog(builderDialog, "Aceptar",
-                true, iAlertDialog);
-        Helper.builOptionButtonDialog(builderDialog, "Cancelar",
-                false, iAlertDialog);
-        AlertDialog dialog = Helper.createDialog(builderDialog);
-        Helper.customOptionButtonColor(dialog, getActivity(), R.color.colorPrimary, true);
-        Helper.customOptionButtonColor(dialog, getActivity(), R.color.colorRed, false);
     }
 }
