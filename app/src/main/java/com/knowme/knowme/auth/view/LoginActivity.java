@@ -13,6 +13,18 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.knowme.knowme.R;
@@ -20,6 +32,8 @@ import com.knowme.knowme.auth.presenter.ILoginPresenter;
 import com.knowme.knowme.auth.presenter.LoginPresenter;
 import com.knowme.knowme.util.Helper;
 import com.knowme.knowme.view.MainActivity;
+
+import java.util.Arrays;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView {
 
@@ -35,6 +49,10 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
+
+    // vars setup sdk facebook
+    private CallbackManager callbackManager;
+    private LoginButton loginFacebookButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +90,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null){
                     Log.w(TAG, "User Logged - " + firebaseUser.getEmail());
+                   // goHome();
                 }else{
                     Log.w(TAG, "User Not Logged.");
                 }
@@ -80,10 +99,62 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
 
         // for testing app
         this.mockData();
+
+        // setup sdk facebook
+        this.setupSDKFacebook();
+    }
+
+    private void setupSDKFacebook() {
+        // sdk facebook
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        this.callbackManager = CallbackManager.Factory.create();
+
+        this.loginFacebookButton = (LoginButton) findViewById(R.id.login_facebook_button);
+        this.loginFacebookButton.setReadPermissions(Arrays.asList("email"));
+
+        this.loginFacebookButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                AccessToken accessToken = loginResult.getAccessToken();
+                Log.w(TAG, "Login with facebook successfull: " + accessToken.getApplicationId());
+                signInFacebookWithFirebase(accessToken);
+            }
+
+            @Override
+            public void onCancel() {
+                Log.w(TAG, "Login with facebook has cancel by user");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.w(TAG, "Login with facebook has cancel by user: " + error.toString());
+                error.getStackTrace();
+                loginError(error.toString());
+
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        this.callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void signInFacebookWithFirebase(AccessToken accessToken) {
+        AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
+        firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    goHome();
+                }
+            }
+        });
     }
 
     private void mockData() {
-        this.usernameEditText.setText("albertchc04@gmail.com");
+        this.usernameEditText.setText("achamorro@coresystems.io");
         this.passwordEditText.setText("22122009");
     }
 
