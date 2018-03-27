@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.knowme.knowme.R;
 import com.knowme.knowme.post.view.HomeFragment;
 import com.knowme.knowme.util.Helper;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private IAlertDialog iAlertDialog = new IAlertDialog() {
         @Override
         public void okAction(DialogInterface dialog, int which) {
+            firebaseAuth.signOut();
             finish();
         }
 
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
             dialog.cancel();
         }
     };
+
+    private FirebaseAuth firebaseAuth;
 
     private int selectedTab = R.id.menu_home;
     private Boolean firstRun = true;
@@ -59,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.firebaseAuth = FirebaseAuth.getInstance();
 
         // setup bottom navigation view
         this.setupBottomNavigationView();
