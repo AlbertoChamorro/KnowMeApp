@@ -4,7 +4,7 @@
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.knowme.knowme.view.fragment.SearchFragment">
+    tools:context="com.knowme.knowme.finder.view.SearchFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -24,7 +24,7 @@ import com.knowme.knowme.post.view.HomeFragment;
 import com.knowme.knowme.util.Helper;
 import com.knowme.knowme.util.interfaces.IAlertDialog;
 import com.knowme.knowme.view.fragment.ProfileFragment;
-import com.knowme.knowme.view.fragment.SearchFragment;
+import com.knowme.knowme.finder.view.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
