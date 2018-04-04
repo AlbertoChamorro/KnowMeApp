@@ -12,7 +12,7 @@ public class UserGitHub {
     private String id;
     @SerializedName("name")
     private String name;
-    @SerializedName("fullName")
+    @SerializedName("full_name")
     private String fullName;
 
     public UserGitHub(String id,String name,String fullName) {

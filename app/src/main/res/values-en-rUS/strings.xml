@@ -23,4 +23,6 @@
     <string name="post_new_titleHint">Title</string>
     <string name="post_new_descriptionHint">Description</string>
     <string name="post_new_create_button">Crear Post</string>
+    <string name="recycler_item_users_title">Título</string>
+    <string name="recycler_item_users_subtitle">subtitle</string>
 </resources>

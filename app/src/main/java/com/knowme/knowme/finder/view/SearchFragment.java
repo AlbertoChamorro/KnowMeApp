@@ -3,6 +3,8 @@ package com.knowme.knowme.finder.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,10 +16,12 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.knowme.knowme.R;
+import com.knowme.knowme.finder.adapter.UserAdapterRecyclerView;
 import com.knowme.knowme.finder.repository.GitHubRepository;
 import com.knowme.knowme.finder.repository.IGitHubRepository;
 import com.knowme.knowme.model.UserGitHub;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,6 +36,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SearchFragment extends Fragment {
 
 
+    private RecyclerView recyclerViewUser;
+    private SearchView searchView;
+    private EditText searchEditText;
+
     public SearchFragment() {
         // Required empty public constructor
     }
@@ -42,14 +50,25 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-        SearchView searchView = (SearchView) view.findViewById(R.id.search);
-        EditText searchEditText = (EditText)searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
-        searchEditText.setTextColor(getResources().getColor(R.color.colorWhite));
-        searchEditText.setHintTextColor(getResources().getColor(R.color.colorWhite));
-        searchView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
+        initViews(view);
         loadData();
+
         return view;
+    }
+
+    private void initViews(View view) {
+
+        searchView = (SearchView) view.findViewById(R.id.search);
+        searchEditText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+//        searchEditText.setTextColor(getResources().getColor(R.color.colorWhite));
+//        searchEditText.setHintTextColor(getResources().getColor(R.color.colorWhite));
+//        searchView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+        recyclerViewUser = (RecyclerView) view.findViewById(R.id.recycler_view_users);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerViewUser.setLayoutManager(linearLayoutManager);
     }
 
     private void loadData() {
@@ -76,6 +95,8 @@ public class SearchFragment extends Fragment {
                     case 200:
                         List<UserGitHub> data = response.body();
                         Log.w("Message", data.toString());
+                        UserAdapterRecyclerView userAdapterRecyclerView = new UserAdapterRecyclerView((ArrayList<UserGitHub>) data, R.layout.recycler_item_user_github, getActivity());
+                        recyclerViewUser.setAdapter(userAdapterRecyclerView);
                         break;
                     case 401:
                         break;

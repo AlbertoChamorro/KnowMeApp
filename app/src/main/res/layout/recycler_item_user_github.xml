@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/d2_space"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/font_size_big"
+            android:text="@string/recycler_item_users_title"/>
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:text="@string/recycler_item_users_subtitle"
+            android:textColor="@color/colorLigthGray"
+            android:textSize="@dimen/font_size_medium"/>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subtitle"
+            android:paddingLeft="@dimen/d2_space"
+            android:paddingRight="@dimen/d2_space"
+            android:layout_marginTop="@dimen/d2_space"
+            android:maxLines="3"
+            android:textColor="@color/colorBlack"
+            android:textAlignment="textStart"
+            android:text="@string/lorem"
+            android:gravity="start"
+            android:layout_gravity="start" />
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
