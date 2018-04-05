@@ -10,8 +10,11 @@ import android.widget.TextView;
 
 import com.knowme.knowme.R;
 import com.knowme.knowme.model.UserGitHub;
+import com.knowme.knowme.util.Helper;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by coredeveloper on 4/4/18.
@@ -23,7 +26,7 @@ public class UserAdapterRecyclerView extends RecyclerView.Adapter<UserAdapterRec
     private int resource;
     private Activity activity;
 
-    public UserAdapterRecyclerView(ArrayList<UserGitHub> data, int resource, FragmentActivity activity) {
+    public UserAdapterRecyclerView(ArrayList<UserGitHub> data, int resource, Activity activity) {
         this.users    = data;
         this.resource = resource;
         this.activity = activity;
@@ -38,9 +41,11 @@ public class UserAdapterRecyclerView extends RecyclerView.Adapter<UserAdapterRec
     @Override
     public void onBindViewHolder(UserGitHubViewHolder holder,int position) {
         UserGitHub user = this.users.get(position);
-        holder.title.setText(user.getName());
-        holder.subtitle.setText(user.getId());
-        holder.description.setText(user.getFullName());
+
+        Helper.LoadImage(activity, user.getAvatarUrl(), holder.avatar, null, null);
+        holder.title.setText(user.getLogin());
+        holder.subtitle.setText(user.getType());
+        holder.description.setText(user.getDescriptionLevel());
     }
 
     @Override
@@ -50,6 +55,7 @@ public class UserAdapterRecyclerView extends RecyclerView.Adapter<UserAdapterRec
 
     public class UserGitHubViewHolder extends RecyclerView.ViewHolder {
 
+        private CircleImageView avatar;
         private TextView  title;
         private TextView  subtitle;
         private TextView  description;
@@ -58,9 +64,10 @@ public class UserAdapterRecyclerView extends RecyclerView.Adapter<UserAdapterRec
 
             super(itemView);
 
-            this.title       = (TextView) itemView.findViewById(R.id.title);
-            this.subtitle    = (TextView) itemView.findViewById(R.id.subtitle);
-            this.description = (TextView) itemView.findViewById(R.id.description);
+            this.avatar      = (CircleImageView) itemView.findViewById(R.id.avatar_image_view);
+            this.title       = (TextView)        itemView.findViewById(R.id.title);
+            this.subtitle    = (TextView)        itemView.findViewById(R.id.subtitle);
+            this.description = (TextView)        itemView.findViewById(R.id.description);
         }
     }
 }

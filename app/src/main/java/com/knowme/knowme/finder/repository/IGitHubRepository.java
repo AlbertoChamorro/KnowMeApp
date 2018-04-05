@@ -12,6 +12,13 @@ import retrofit2.http.GET;
  */
 
 public interface IGitHubRepository {
+
     @GET("users/{user}/repos")
     Call<List<UserGitHub>> getRepositories(@Path("user") String user);
+
+    @GET("users")
+    Call<List<UserGitHub>> getUsers();
+
+    @GET("users/{user}")
+    Call<UserGitHub> getUser(@Path("user") String user);
 }

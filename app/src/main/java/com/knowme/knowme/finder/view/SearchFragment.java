@@ -17,7 +17,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.knowme.knowme.R;
 import com.knowme.knowme.finder.adapter.UserAdapterRecyclerView;
-import com.knowme.knowme.finder.repository.GitHubRepository;
 import com.knowme.knowme.finder.repository.IGitHubRepository;
 import com.knowme.knowme.model.UserGitHub;
 
@@ -86,7 +85,10 @@ public class SearchFragment extends Fragment {
                                         .build();
 
         IGitHubRepository service = retrofit.create(IGitHubRepository.class);
-        Call<List<UserGitHub>> call = service.getRepositories("mojombo");
+
+        // Call<List<UserGitHub>> call = service.getRepositories("mojombo");
+
+        Call<List<UserGitHub>> call = service.getUsers();
 
         call.enqueue(new Callback<List<UserGitHub>>() {
             @Override
@@ -94,9 +96,11 @@ public class SearchFragment extends Fragment {
                 switch (response.code()){
                     case 200:
                         List<UserGitHub> data = response.body();
-                        Log.w("Message", data.toString());
+
                         UserAdapterRecyclerView userAdapterRecyclerView = new UserAdapterRecyclerView((ArrayList<UserGitHub>) data, R.layout.recycler_item_user_github, getActivity());
                         recyclerViewUser.setAdapter(userAdapterRecyclerView);
+
+                        Log.w("Message", data.toString());
                         break;
                     case 401:
                         break;

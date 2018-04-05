@@ -6,6 +6,7 @@
     <dimen name="paddingHorizontal">32dp</dimen>
     <dimen name="default_space">8dp</dimen>
     <dimen name="d2_space">16dp</dimen>
+    <dimen name="d3_space">24dp</dimen>
     <dimen name="margin_ic_toolbar">2dp</dimen>
     <dimen name="separator">4dp</dimen>
     <dimen name="height_picture_cardview">200dp</dimen>
@@ -23,6 +24,8 @@
     <dimen name="font_size_default">16dp</dimen>
     <dimen name="font_size_medium">18dp</dimen>
     <dimen name="font_size_toolbar">20dp</dimen>
-    <dimen name="font_size_big">26dp</dimen>
+    <dimen name="font_size_big">22dp</dimen>
+    <dimen name="font_size_bigger">24dp</dimen>
+    <dimen name="font_size_giant">26dp</dimen>
 
 </resources>

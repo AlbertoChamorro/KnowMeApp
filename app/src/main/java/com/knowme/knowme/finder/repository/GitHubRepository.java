@@ -22,8 +22,16 @@ public class GitHubRepository implements IGitHubRepository{
 
     @Override
     public Call<List<UserGitHub>> getRepositories(String username) {
+        return null;
+    }
 
-        Call<List<UserGitHub>> repositoriesByUser = service.getRepositories(username);
-        return repositoriesByUser;
+    @Override
+    public Call<List<UserGitHub>> getUsers() {
+        return null;
+    }
+
+    @Override
+    public Call<UserGitHub> getUser(String user) {
+        return null;
     }
 }

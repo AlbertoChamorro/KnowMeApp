@@ -8,43 +8,61 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar_image_view"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="@dimen/d2_space"
+            android:layout_marginLeft="@dimen/d2_space"
+            android:layout_marginRight="@dimen/d2_space"
+            android:layout_marginBottom="@dimen/default_space"
+            android:src="@drawable/placeholder"
+            android:elevation="@dimen/cardview_corner_radius" />
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="@dimen/d2_space"
-            android:layout_centerHorizontal="true"
             android:textStyle="bold"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/font_size_big"
-            android:text="@string/recycler_item_users_title"/>
+            android:text="@string/recycler_item_users_title"
+            android:layout_toRightOf="@+id/avatar_image_view"
+            android:layout_marginTop="@dimen/d3_space"
+            />
+        <!-- android:layout_centerInParent="true" -->
 
         <TextView
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"
             android:text="@string/recycler_item_users_subtitle"
             android:textColor="@color/colorLigthGray"
-            android:textSize="@dimen/font_size_medium"/>
+            android:textSize="@dimen/font_size_small"
+            android:layout_below="@+id/title"
+            android:layout_alignLeft="@id/title"
+            android:layout_marginBottom="@dimen/default_space"
+            />
 
         <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/subtitle"
-            android:paddingLeft="@dimen/d2_space"
-            android:paddingRight="@dimen/d2_space"
-            android:layout_marginTop="@dimen/d2_space"
+            android:layout_below="@+id/avatar_image_view"
+            android:layout_alignLeft="@+id/avatar_image_view"
+            android:layout_marginRight="@dimen/d2_space"
+            android:layout_marginTop="@dimen/default_space"
+            android:layout_marginBottom="@dimen/default_space"
             android:maxLines="3"
             android:textColor="@color/colorBlack"
-            android:textAlignment="textStart"
-            android:text="@string/lorem"
-            android:gravity="start"
-            android:layout_gravity="start" />
+            android:text="@string/lorem" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLigthGray"
+            android:layout_below="@+id/description"
+            ></View>
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
