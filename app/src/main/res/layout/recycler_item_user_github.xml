@@ -10,8 +10,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar_image_view"
-            android:layout_width="84dp"
-            android:layout_height="84dp"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
             android:layout_marginTop="@dimen/d2_space"
             android:layout_marginLeft="@dimen/d2_space"
             android:layout_marginRight="@dimen/d2_space"
@@ -20,9 +20,10 @@
             android:elevation="@dimen/cardview_corner_radius" />
 
         <ImageView
+            android:id="@+id/detail_arrow_image_view"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_alignBottom="@+id/avatar_image_view"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:backgroundTint="@color/colorBlue"
             android:layout_marginRight="@dimen/d2_space"
@@ -37,7 +38,7 @@
             android:textSize="@dimen/font_size_big"
             android:text="@string/recycler_item_users_title"
             android:layout_toRightOf="@+id/avatar_image_view"
-            android:layout_marginTop="@dimen/d3_space"
+            android:layout_marginTop="@dimen/d2_space"
             />
         <!-- android:layout_centerInParent="true" -->
 
@@ -50,27 +51,27 @@
             android:textSize="@dimen/font_size_small"
             android:layout_below="@+id/title"
             android:layout_alignLeft="@id/title"
-            android:layout_marginBottom="@dimen/default_space"
             />
 
         <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/avatar_image_view"
-            android:layout_alignLeft="@+id/avatar_image_view"
-            android:layout_marginRight="@dimen/d2_space"
+            android:layout_below="@+id/subtitle"
             android:layout_marginTop="@dimen/default_space"
-            android:layout_marginBottom="@dimen/default_space"
-            android:maxLines="3"
+            android:layout_toRightOf="@+id/avatar_image_view"
+            android:layout_alignLeft="@+id/subtitle"
+            android:layout_toLeftOf="@+id/detail_arrow_image_view"
+            android:maxLines="2"
             android:textColor="@color/colorBlack"
             android:text="@string/lorem" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="@dimen/default_space"
             android:background="@color/colorLigthGray"
-            android:layout_below="@+id/description"
+            android:layout_below="@+id/avatar_image_view"
             ></View>
     </RelativeLayout>
 
