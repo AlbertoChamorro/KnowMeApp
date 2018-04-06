@@ -3,6 +3,7 @@ package com.knowme.knowme.finder.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -23,6 +24,8 @@ import com.knowme.knowme.model.UserGitHub;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,8 +38,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SearchFragment extends Fragment {
 
 
-    private RecyclerView recyclerViewUser;
-    private SearchView searchView;
+    @BindView(R.id.refresh_view_users)
+    SwipeRefreshLayout refreshViewUsers;
+
+    @BindView(R.id.recycler_view_users)
+    RecyclerView recyclerViewUser;
+
+    @BindView(R.id.search)
+    SearchView searchView;
+
     private EditText searchEditText;
 
     public SearchFragment() {
@@ -49,7 +59,7 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-
+        ButterKnife.bind(this, view);
         initViews(view);
         loadData();
 
@@ -58,13 +68,11 @@ public class SearchFragment extends Fragment {
 
     private void initViews(View view) {
 
-        searchView = (SearchView) view.findViewById(R.id.search);
         searchEditText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
 //        searchEditText.setTextColor(getResources().getColor(R.color.colorWhite));
 //        searchEditText.setHintTextColor(getResources().getColor(R.color.colorWhite));
 //        searchView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
-        recyclerViewUser = (RecyclerView) view.findViewById(R.id.recycler_view_users);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewUser.setLayoutManager(linearLayoutManager);
