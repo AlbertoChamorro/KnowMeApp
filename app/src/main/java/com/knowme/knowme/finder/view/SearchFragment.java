@@ -76,6 +76,21 @@ public class SearchFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewUser.setLayoutManager(linearLayoutManager);
+
+        refreshViewUsers.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                recyclerViewUser.setAdapter(null);
+                loadData();
+            }
+        });
+
+        refreshViewUsers.setColorSchemeResources(
+                R.color.colorPrimary,
+                R.color.colorDarkGray,
+                R.color.colorBlue,
+                R.color.colorRed
+        );
     }
 
     private void loadData() {
@@ -108,6 +123,7 @@ public class SearchFragment extends Fragment {
                         UserAdapterRecyclerView userAdapterRecyclerView = new UserAdapterRecyclerView((ArrayList<UserGitHub>) data, R.layout.recycler_item_user_github, getActivity());
                         recyclerViewUser.setAdapter(userAdapterRecyclerView);
 
+                        refreshViewUsers.setRefreshing(false);
                         Log.w("Message", data.toString());
                         break;
                     case 401:
@@ -120,6 +136,7 @@ public class SearchFragment extends Fragment {
             @Override
             public void onFailure(Call<List<UserGitHub>> call, Throwable t) {
                 Log.e("error", t.toString());
+                refreshViewUsers.setRefreshing(false);
             }
         });
     }
