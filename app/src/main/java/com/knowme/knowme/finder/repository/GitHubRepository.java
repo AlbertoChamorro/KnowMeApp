@@ -1,37 +1,62 @@
 package com.knowme.knowme.finder.repository;
 
 import com.knowme.knowme.api.RetrofitManager;
+import com.knowme.knowme.finder.presenter.UserGitHubPresenter;
 import com.knowme.knowme.model.UserGitHub;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by coredeveloper on 4/3/18.
  */
 
-public class GitHubRepository implements IGitHubRepository{
+public class GitHubRepository implements IGitHubRepository {
 
-    private IGitHubRepository service;
+    private IGitHubRepositoryApi service;
+    private UserGitHubPresenter userGitHubPresenter;
 
-    public GitHubRepository(){
+    public GitHubRepository(UserGitHubPresenter userGitHubPresenter){
 
-        this.service = RetrofitManager.sharedInstance.retrofit.create(IGitHubRepository.class);
+        this.userGitHubPresenter = userGitHubPresenter;
+        this.service = RetrofitManager.sharedInstance.retrofit.create(IGitHubRepositoryApi.class);
     }
 
     @Override
-    public Call<List<UserGitHub>> getRepositories(String username) {
-        return null;
+    public void getRepositories(String user) {
+
     }
 
     @Override
-    public Call<List<UserGitHub>> getUsers() {
-        return null;
+    public void getUsers() {
+
+        Call<List<UserGitHub>> call = service.getUsers();
+        call.enqueue(new Callback<List<UserGitHub>>() {
+            @Override
+            public void onResponse(Call<List<UserGitHub>> call, Response<List<UserGitHub>> response) {
+                switch (response.code()){
+                    case 200:
+                        List<UserGitHub> data = response.body();
+                        userGitHubPresenter.success((ArrayList<UserGitHub>) data);
+                        break;
+                    case 401: break;
+                    default: break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<UserGitHub>> call, Throwable t) {
+                userGitHubPresenter.error(t.toString());
+            }
+        });
     }
 
     @Override
-    public Call<UserGitHub> getUser(String user) {
-        return null;
+    public void getUser(String user) {
+
     }
 }

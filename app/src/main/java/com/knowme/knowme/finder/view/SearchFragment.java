@@ -1,41 +1,32 @@
 package com.knowme.knowme.finder.view;
 
-
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.knowme.knowme.R;
 import com.knowme.knowme.finder.adapter.UserAdapterRecyclerView;
-import com.knowme.knowme.finder.repository.IGitHubRepository;
+import com.knowme.knowme.finder.presenter.IUserGitHubPresenter;
+import com.knowme.knowme.finder.presenter.UserGitHubPresenter;
 import com.knowme.knowme.model.UserGitHub;
+import com.knowme.knowme.util.Helper;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements IUserGitHubView{
 
 
     @BindView(R.id.refresh_view_users)
@@ -48,6 +39,8 @@ public class SearchFragment extends Fragment {
     SearchView searchView;
 
     private EditText searchEditText;
+
+    private IUserGitHubPresenter userGitHubPresenter;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -68,6 +61,7 @@ public class SearchFragment extends Fragment {
 
     private void initViews(View view) {
 
+        this.userGitHubPresenter = new UserGitHubPresenter(this);
         searchEditText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
 //        searchEditText.setTextColor(getResources().getColor(R.color.colorWhite));
 //        searchEditText.setHintTextColor(getResources().getColor(R.color.colorWhite));
@@ -80,7 +74,6 @@ public class SearchFragment extends Fragment {
         refreshViewUsers.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                recyclerViewUser.setAdapter(null);
                 loadData();
             }
         });
@@ -92,53 +85,25 @@ public class SearchFragment extends Fragment {
                 R.color.colorRed
         );
     }
-
-    private void loadData() {
-
-        //GitHubRepository gitHubRepository = new GitHubRepository();
-        //gitHubRepository.getRepositories("octocat");
-
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .create();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                                        .baseUrl("https://api.github.com/")
-                                        .addConverterFactory(GsonConverterFactory.create(gson))
-                                        .build();
-
-        IGitHubRepository service = retrofit.create(IGitHubRepository.class);
-
-        // Call<List<UserGitHub>> call = service.getRepositories("mojombo");
-
-        Call<List<UserGitHub>> call = service.getUsers();
-
-        call.enqueue(new Callback<List<UserGitHub>>() {
-            @Override
-            public void onResponse(Call<List<UserGitHub>> call, Response<List<UserGitHub>> response) {
-                switch (response.code()){
-                    case 200:
-                        List<UserGitHub> data = response.body();
-
-                        UserAdapterRecyclerView userAdapterRecyclerView = new UserAdapterRecyclerView((ArrayList<UserGitHub>) data, R.layout.recycler_item_user_github, getActivity());
-                        recyclerViewUser.setAdapter(userAdapterRecyclerView);
-
-                        refreshViewUsers.setRefreshing(false);
-                        Log.w("Message", data.toString());
-                        break;
-                    case 401:
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<UserGitHub>> call, Throwable t) {
-                Log.e("error", t.toString());
-                refreshViewUsers.setRefreshing(false);
-            }
-        });
+    @Override
+    public void loadData() {
+        this.setAdapter(null);
+        this.userGitHubPresenter.getUsers();
+    }
+    @Override
+    public void setAdapter(ArrayList<UserGitHub> data) {
+        recyclerViewUser.setAdapter(new UserAdapterRecyclerView(data, R.layout.recycler_item_user_github, getActivity()));
     }
 
+    @Override
+    public void showRefreshView(Boolean state) {
+        refreshViewUsers.setRefreshing(state);
+    }
+
+    @Override
+    public void showMessageError(String error) {
+        Helper.showSnackBar(this.getView(), error, Snackbar.LENGTH_LONG,
+                getResources().getColor(R.color.colorWhite),
+                getResources().getColor(R.color.colorPrimary));
+    }
 }

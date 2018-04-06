@@ -50,7 +50,11 @@ public class UserAdapterRecyclerView extends RecyclerView.Adapter<UserAdapterRec
 
     @Override
     public int getItemCount() {
-        return users.size();
+        if (users != null) {
+            return users.size();
+        }
+
+        return 0;
     }
 
     public class UserGitHubViewHolder extends RecyclerView.ViewHolder {
