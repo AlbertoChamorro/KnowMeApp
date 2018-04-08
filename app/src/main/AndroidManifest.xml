@@ -52,6 +52,9 @@
 
         <activity android:name=".post.view.NewPostActivity"></activity>
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="53fb1197108151298dd2bf66b310f0635a488a20" />
     </application>
 
 </manifest>
