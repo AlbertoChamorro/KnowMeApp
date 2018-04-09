@@ -49,11 +49,11 @@
         </activity>
         <!-- End Splash Screen -->
 
-        <activity android:name=".auth.view.LoginActivity" />
-        <activity android:name=".auth.view.CreateAccountActivity" />
+        <activity android:name=".auth.view.LoginActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".auth.view.CreateAccountActivity" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.HomeDetailActivity" />
-        <activity android:name=".post.view.NewPostActivity" />
+        <activity android:name=".post.view.NewPostActivity" android:windowSoftInputMode="stateHidden"/>
 
         <meta-data
             android:name="io.fabric.ApiKey"
