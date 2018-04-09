@@ -2,12 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.knowme.knowme">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.camera2"
-        android:required="true"/>
+        android:required="true" />
 
     <application
         android:name=".KnowmeApp"
@@ -17,40 +17,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
         <provider
-            android:authorities="com.knowme.knowme"
             android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.knowme.knowme"
             android:exported="false"
-            android:grantUriPermissions="true"
-            >
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-                        android:resource="@xml/file_path"
-                ></meta-data>
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path" />
         </provider>
 
-        <activity android:name="com.facebook.FacebookActivity"
+        <activity
+            android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name" />
 
-        <activity android:name=".auth.view.LoginActivity">
+        <!-- Splash screen -->
+        <activity
+            android:name=".SplashActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        <!--<activity android:name=".SplashActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- End Splash Screen -->
 
-        <activity android:name=".auth.view.CreateAccountActivity"></activity>
-
+        <activity android:name=".auth.view.LoginActivity" />
+        <activity android:name=".auth.view.CreateAccountActivity" />
         <activity android:name=".view.MainActivity" />
-
-        <activity android:name=".view.HomeDetailActivity"></activity>
-
-        <activity android:name=".post.view.NewPostActivity"></activity>
+        <activity android:name=".view.HomeDetailActivity" />
+        <activity android:name=".post.view.NewPostActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
