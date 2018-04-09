@@ -11,7 +11,7 @@ import com.knowme.knowme.auth.view.LoginActivity;
 public class SplashActivity extends AppCompatActivity {
 
     // Splash screen timer
-    private static int SPLASH_TIME_OUT = 2500;
+    private static int SPLASH_TIME_OUT = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
