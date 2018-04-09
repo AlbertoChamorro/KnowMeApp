@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -135,5 +136,19 @@ public class Helper {
 
         int optionButton = isOkAction ? AlertDialog.BUTTON_POSITIVE : AlertDialog.BUTTON_NEGATIVE;
         dialog.getButton(optionButton).setTextColor(context.getResources().getColor(textColor));
+    }
+
+    public static void setOnBackPressedListener(AlertDialog dialog){
+
+        dialog.setOnKeyListener(new Dialog.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                // TODO Auto-generated method stub
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    dialog.dismiss();
+                }
+                return true;
+            }
+        });
     }
 }

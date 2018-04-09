@@ -202,6 +202,6 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog dialog = Helper.createDialog(builderDialog);
         Helper.customOptionButtonColor(dialog, this, R.color.colorPrimary, true);
         Helper.customOptionButtonColor(dialog, this, R.color.colorRed, false);
+        Helper.setOnBackPressedListener(dialog);
     }
-
 }
