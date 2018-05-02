@@ -1,9 +1,10 @@
 package com.knowme.knowme.view.fragment;
 
-
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,10 @@ import com.knowme.knowme.R;
 public class ProfileFragment extends Fragment implements OnMapReadyCallback {
 
 
+    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 10;
+    private boolean mLocationPermissionGranted;
+    private GoogleMap googleMap;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -35,15 +40,44 @@ public class ProfileFragment extends Fragment implements OnMapReadyCallback {
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
+        
         return view;
+    }
+
+    private void getDeviceLocation() {
+        if (ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mLocationPermissionGranted = true;
+        } else {
+            requestPermissions (new String []{android.Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        mLocationPermissionGranted = false;
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    mLocationPermissionGranted = true;
+                    //updateLocationUI();
+                    showMarker(-33.852, 151.211, "Marker in Sydney");
+                }
+            }
+        }
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng sydney = new LatLng(-33.852, 151.211);
-        googleMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Marker in Sydney"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        this.googleMap = googleMap;
+        getDeviceLocation();
+    }
+
+    private void showMarker(double lat, double lng, String title){
+        LatLng location = new LatLng(lat, lng);
+        googleMap.addMarker(new MarkerOptions().position(location)
+                .title(title));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(location));
     }
 }

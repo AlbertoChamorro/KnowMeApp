@@ -1,17 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.knowme.knowme.view.fragment.ProfileFragment">
 
-    <fragment android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.mapwithmarker.MapsMarkerActivity" />
+        android:orientation="vertical">
+        <fragment android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/d2_space"
+            android:paddingTop="@dimen/default_space"
+            android:paddingBottom="@dimen/default_space"
+            android:text="Ubicacion de Tiendas Cercanas"
+            android:textSize="@dimen/font_size_medium"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLigthGray"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/d3_space"
+            android:paddingTop="@dimen/default_space"
+            android:paddingBottom="@dimen/default_space"
+            android:text=" - Mejores Vendedores"
+            android:textSize="@dimen/font_size_medium"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLigthGray"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/d3_space"
+            android:paddingTop="@dimen/default_space"
+            android:paddingBottom="@dimen/default_space"
+            android:text=" - Mejores Sucursales"
+            android:textSize="@dimen/font_size_medium"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLigthGray"
+            />
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
