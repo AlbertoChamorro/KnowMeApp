@@ -48,6 +48,7 @@ public class ProfileFragment extends Fragment implements OnMapReadyCallback {
         if (ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mLocationPermissionGranted = true;
+            this.showMarkersInMap();
         } else {
             requestPermissions (new String []{android.Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
         }
@@ -61,11 +62,15 @@ public class ProfileFragment extends Fragment implements OnMapReadyCallback {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     mLocationPermissionGranted = true;
-                    //updateLocationUI();
-                    showMarker(-33.852, 151.211, "Marker in Sydney");
+                    this.showMarkersInMap();
                 }
             }
         }
+    }
+
+    private void showMarkersInMap() {
+        showMarker(-33.852, 151.211, "Marker in Sydney");
+        showMarker(-34.852, 155.211, "Marker in Sydney 2");
     }
 
     @Override
