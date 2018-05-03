@@ -53,6 +53,8 @@ public class LoginRepository implements ILoginRepository {
                     editor.putString("email", task.getResult().getUser().getEmail());
                     editor.commit();
 
+                    // sp.getAll() || sp.getString("email", "nulo") || sp.getInt("email", 2)
+
                     loginPresenter.signInSuccess();
                     return;
                 }
