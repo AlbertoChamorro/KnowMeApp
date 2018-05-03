@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     private TextInputEditText passwordEditText;
     private TextView create_account_here;
     private Button loginButton;
+    private TextView showActiveAndroid;
     private ProgressBar progressBar;
     private ILoginPresenter loginPresenter;
     private TextView nameAppTextView;
@@ -79,6 +80,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         this.create_account_here = (TextView) findViewById(R.id.create_account_here);
 
         this.create_account_here.setText(Helper.underlineText(this.create_account_here.getText().toString()));
+
+        this.showActiveAndroid = (TextView) findViewById(R.id.active_android_tv);
+        this.showActiveAndroid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showActiveAndroid();
+            }
+        });
 
         this.loginPresenter = new LoginPresenter(this);
         this.toggleProgressBar(false);
@@ -163,6 +172,11 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
                 }
             }
         });
+    }
+
+    private void showActiveAndroid(){
+        Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
+        startActivity(intent);
     }
 
     private void mockData() {

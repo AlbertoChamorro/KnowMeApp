@@ -99,31 +99,54 @@
                         android:layout_marginTop="@dimen/default_space"
                         android:layout_marginBottom="@dimen/default_space" />
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center">
-                        <TextView
-                            android:id="@+id/dont_have_account"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_dont_have_account"
-                            android:textSize="@dimen/font_size_small"
-                            android:textColor="@color/colorWhite"/>
-                        <TextView
-                            android:id="@+id/create_account_here"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_create_account_now"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="@dimen/font_size_default"
-                            android:textStyle="bold"
-                            android:paddingLeft="@dimen/default_space"
-                            android:layout_toRightOf="@+id/dont_have_account"
-                            android:layout_alignBaseline="@+id/dont_have_account"
-                            android:onClick="createNewAccount"
-                            />
-                    </RelativeLayout>
+                        android:orientation="vertical"
+                        android:weightSum="1">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.4"
+                            android:gravity="center">
+                            <TextView
+                                android:id="@+id/dont_have_account"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/text_dont_have_account"
+                                android:textSize="@dimen/font_size_small"
+                                android:textColor="@color/colorWhite"/>
+                            <TextView
+                                android:id="@+id/create_account_here"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/text_create_account_now"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/font_size_default"
+                                android:textStyle="bold"
+                                android:paddingLeft="@dimen/default_space"
+                                android:layout_toRightOf="@+id/dont_have_account"
+                                android:layout_alignBaseline="@+id/dont_have_account"
+                                android:onClick="createNewAccount"
+                                />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"
+                            android:gravity="center">
+                            <TextView
+                                android:id="@+id/active_android_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/text_active_android"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="@dimen/font_size_small"
+                                android:textStyle="bold"
+                                android:onClick="showActiveAndroid"
+                                />
+                        </RelativeLayout>
+                    </LinearLayout>
                 </LinearLayout>
                 <ProgressBar
                     android:id="@+id/progress_bar_login"

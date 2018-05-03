@@ -28,4 +28,5 @@
     <string name="fb_login_protocol_scheme">fb967378216803667</string>
     <string name="recycler_item_users_title">Título</string>
     <string name="recycler_item_users_subtitle">subtitle</string>
+    <string name="text_active_android">interactor with active android</string>
 </resources>
