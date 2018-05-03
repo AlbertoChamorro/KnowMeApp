@@ -12,6 +12,7 @@ apply plugin: 'io.fabric'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
 
@@ -59,6 +60,7 @@ dependencies {
         transitive = true;
     }
     implementation 'com.google.android.gms:play-services-maps:11.8.0'
+    implementation 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
 }
 
 apply plugin: 'com.google.gms.google-services'

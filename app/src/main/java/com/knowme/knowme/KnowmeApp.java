@@ -1,6 +1,6 @@
 package com.knowme.knowme;
 
-import android.app.Application;
+import com.activeandroid.app.Application;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 
