@@ -1,7 +1,11 @@
 package com.knowme.knowme.auth.view;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
@@ -30,10 +34,18 @@ import com.google.firebase.auth.FirebaseUser;
 import com.knowme.knowme.R;
 import com.knowme.knowme.auth.presenter.ILoginPresenter;
 import com.knowme.knowme.auth.presenter.LoginPresenter;
+import com.knowme.knowme.database.DatabaseHelper;
+import com.knowme.knowme.model.ManagmentDatabase;
+import com.knowme.knowme.model.User;
 import com.knowme.knowme.util.Helper;
 import com.knowme.knowme.view.MainActivity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+import static java.security.AccessController.getContext;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView {
 
@@ -174,7 +186,77 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     public void login() {
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
+        //insertData();
+        //readData();
         loginPresenter.signIn(username, password, this, firebaseAuth);
+    }
+
+    private void insertData(){
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        // Gets the data repository in write mode
+        SQLiteDatabase db = databaseHelper.getWritableDatabase();
+
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(ManagmentDatabase.UserTable.COLUMN_USERNAME, "usuario de prueba");
+        values.put(ManagmentDatabase.UserTable.COLUMN_EMAIL, "correo@dominio");
+        values.put(ManagmentDatabase.UserTable.COLUMN_PASSWORD, "password123$");
+        values.put(ManagmentDatabase.UserTable.COLUMN_CREATED_DATE, new Date().toString());
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId = db.insert(ManagmentDatabase.UserTable.TABLE_NAME, null, values);
+        Log.w("LOGIN ACTIVIY", "primary key -> " + newRowId);
+    }
+
+    private void readData(){
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+        // Define a projection that specifies which columns from the database
+        // you will actually use after this query.
+        String[] projection = {
+                BaseColumns._ID,
+                ManagmentDatabase.UserTable.COLUMN_USERNAME,
+                ManagmentDatabase.UserTable.COLUMN_EMAIL
+        };
+
+        // Filter results WHERE "title" = 'My Title'
+        String selection =  ManagmentDatabase.UserTable.COLUMN_USERNAME + " = ?";
+        String[] selectionArgs = { "usuario de prueba" };
+
+        // How you want the results sorted in the resulting Cursor
+        String sortOrder = ManagmentDatabase.UserTable.COLUMN_USERNAME + " DESC";
+
+        Cursor cursor = db.query(
+                ManagmentDatabase.UserTable.TABLE_NAME,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                sortOrder               // The sort order
+        );
+
+        List<User> users = new ArrayList<>();
+        while(cursor.moveToNext()) {
+            long id = cursor.getLong(cursor.getColumnIndexOrThrow(ManagmentDatabase.UserTable._ID));
+
+            User user = new User();
+            //user.setId(cursor.getInt(cursor.getColumnIndex(ManagmentDatabase.UserTable._ID)));
+            user.setId((int) id);
+            user.setUserName(cursor.getString(cursor.getColumnIndex(ManagmentDatabase.UserTable.COLUMN_USERNAME)));
+            user.setEmail(cursor.getString(cursor.getColumnIndex(ManagmentDatabase.UserTable.COLUMN_EMAIL)));
+
+            users.add(user);
+        }
+        cursor.close();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        // close database
+        super.onDestroy();
     }
 
     @Override

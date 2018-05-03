@@ -6,6 +6,7 @@ package com.knowme.knowme.model;
 
 public class User {
 
+    private Integer id;
     private String email;
     private String name;
     private String userName;
@@ -14,11 +15,20 @@ public class User {
     public User() {
     }
 
-    public User(String email, String name, String userName, String password) {
+    public User(Integer id,String email,String name,String userName,String password) {
+        this.id = id;
         this.email = email;
         this.name = name;
         this.userName = userName;
         this.password = password;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmail() {
