@@ -97,7 +97,7 @@ public class CreateAccountActivity extends AppCompatActivity implements ICreateA
             return;
         }
 
-        User user = new User(0, email, name, userName, password);
+        User user = new User(0, email, name, userName, password, null, null, null);
         createAccountPresenter.createAccount(user, CreateAccountActivity.this);
     }
 
