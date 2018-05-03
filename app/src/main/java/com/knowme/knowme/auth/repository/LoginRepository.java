@@ -1,6 +1,8 @@
 package com.knowme.knowme.auth.repository;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
@@ -24,7 +26,7 @@ public class LoginRepository implements ILoginRepository {
     }
 
     @Override
-    public void signIn(String username, String password, Activity activity, FirebaseAuth firebaseAuth) {
+    public void signIn(final String username,String password,final Activity activity,FirebaseAuth firebaseAuth) {
 
         // code test
 //        Handler handler = new Handler();
@@ -45,6 +47,12 @@ public class LoginRepository implements ILoginRepository {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+
+                    SharedPreferences sp = activity.getSharedPreferences("UserSingIn",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("email", task.getResult().getUser().getEmail());
+                    editor.commit();
+
                     loginPresenter.signInSuccess();
                     return;
                 }
