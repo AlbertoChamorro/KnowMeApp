@@ -11,6 +11,7 @@ import com.knowme.knowme.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ActiveAndroidActivity extends AppCompatActivity {
 
@@ -38,17 +39,11 @@ public class ActiveAndroidActivity extends AppCompatActivity {
 
         this.titleToolbar.setText(getResources().getString(R.string.text_active_android));
         this.imageLeftToolbar.setBackgroundResource(R.drawable.ic_action_arrow_left);
-        this.imageLeftToolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
         this.imageRightToolbar.setVisibility(View.INVISIBLE);
         this.toggleProgressBar(false);
     }
 
+    @OnClick(R.id.left_image_toolbar)
     @Override
     public void onBackPressed() {
         super.onBackPressed();
