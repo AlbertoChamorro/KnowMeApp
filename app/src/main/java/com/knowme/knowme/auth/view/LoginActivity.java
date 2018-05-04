@@ -31,6 +31,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.knowme.knowme.active_android.view.ActiveAndroidActivity;
 import com.knowme.knowme.R;
 import com.knowme.knowme.auth.presenter.ILoginPresenter;
 import com.knowme.knowme.auth.presenter.LoginPresenter;
@@ -44,8 +45,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-
-import static java.security.AccessController.getContext;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView {
 
@@ -175,7 +174,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     private void showActiveAndroid(){
-        Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
+        Intent intent = new Intent(LoginActivity.this, ActiveAndroidActivity.class);
         startActivity(intent);
     }
 

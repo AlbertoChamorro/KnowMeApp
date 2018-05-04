@@ -88,6 +88,8 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAZOGz__v0rxDf139Kxs3r1KcLKBqtA8Yw" />
+
+        <activity android:name=".active_android.view.ActiveAndroidActivity"></activity>
     </application>
 
 </manifest>
