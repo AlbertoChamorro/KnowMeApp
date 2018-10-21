@@ -7,7 +7,6 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +14,6 @@ import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,7 +48,7 @@ public class Helper {
                 .into(container);
     }
 
-    public static void showToast(Activity context, String message, int time){
+    public static void showToast(Context context, CharSequence message, int time){
 
         Toast.makeText(context, message, time).show();
     }
