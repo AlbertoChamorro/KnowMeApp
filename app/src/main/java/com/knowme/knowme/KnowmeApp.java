@@ -1,5 +1,7 @@
 package com.knowme.knowme;
 
+// com.activeandroid.app.Application is of ActiveAndroid package
+// android.app.Application of native android package
 import com.activeandroid.app.Application;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
